@@ -1,0 +1,1975 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZWNB3WHS6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HZWNB3WHS6');
+</script>
+<title>GeoBlocks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: tool rail on the left (stacks below on phones), full-bleed 3D viewport on the right that flips between the brick table and the ArcGIS globe. */
+:root {
+  --bg: #f3f1ec;
+  --panel: #fbfaf7;
+  --ink: #1d2230;
+  --muted: #5f6577;
+  --line: #dcd8cf;
+  --accent: #d6281b;          /* classic brick red */
+  --accent-ink: #ffffff;
+  --sky: #c9dcec;
+  --plate: #4b9b4f;           /* baseplate green */
+  --ok: #2f8a4a;
+  --warn: #b8481c;
+  --focus: #1f6fd1;
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Atkinson Hyperlegible", "Verdana", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171f; --panel: #1b1f29; --ink: #eceae4; --muted: #a2a7b6; --line: #2e3443;
+    --accent: #ef4a3a; --accent-ink: #ffffff; --sky: #1d2735; --plate: #3d7d41;
+    --ok: #5cc27b; --warn: #f08a5d; --focus: #6aa8ff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14171f; --panel: #1b1f29; --ink: #eceae4; --muted: #a2a7b6; --line: #2e3443;
+  --accent: #ef4a3a; --accent-ink: #ffffff; --sky: #1d2735; --plate: #3d7d41;
+  --ok: #5cc27b; --warn: #f08a5d; --focus: #6aa8ff; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 15px/1.45 var(--font-body);
+}
+.app {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+}
+aside {
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+  padding: 18px 18px 28px;
+  display: flex; flex-direction: column; gap: 22px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark { width: 42px; height: 30px; flex: none; }
+.brand h1 {
+  font: 800 1.55rem/1 var(--font-display); letter-spacing: -0.02em; margin: 0;
+}
+.brand p { margin: 3px 0 0; color: var(--muted); font-size: 0.82rem; }
+
+section h2 {
+  font: 700 0.72rem/1 var(--font-body);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted); margin: 0 0 10px;
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+section h2 span { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--ink); }
+
+/* Colour swatches */
+.swatches { display: grid; grid-template-columns: repeat(7, 1fr); gap: 7px; }
+.swatch {
+  aspect-ratio: 1; border-radius: 7px; border: 2px solid transparent; cursor: pointer;
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,.18), inset 0 0 0 1px rgba(0,0,0,.15);
+  position: relative; padding: 0;
+}
+.swatch[aria-pressed="true"] { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* Brick sizes */
+.sizes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.size {
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  border-radius: 8px; padding: 8px 4px 6px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  font: 600 0.8rem/1 var(--font-mono);
+}
+.size svg { width: 100%; height: 22px; }
+.size[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent) inset; }
+
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  border-radius: 8px; padding: 8px 12px; cursor: pointer;
+  font: 700 0.85rem/1 var(--font-body);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn:hover { border-color: var(--muted); }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+kbd {
+  font: 600 0.72rem/1 var(--font-mono); padding: 2px 5px; border-radius: 4px;
+  border: 1px solid currentColor; opacity: .7;
+}
+
+.field { display: grid; gap: 4px; }
+.field label { font-size: 0.8rem; color: var(--muted); }
+.fields2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+input[type="number"], select, input[type="text"] {
+  width: 100%; min-width: 0;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  border-radius: 7px; padding: 8px 9px;
+  font: 500 0.92rem/1.2 var(--font-mono);
+}
+.unitpair { display: grid; grid-template-columns: 1fr 92px; gap: 8px; }
+.hint { font-size: 0.78rem; color: var(--muted); margin: 6px 0 0; }
+
+.stats {
+  display: grid; grid-template-columns: auto 1fr; gap: 4px 12px;
+  font-size: 0.86rem;
+}
+.stats dt { color: var(--muted); }
+.stats dd { margin: 0; font: 500 0.86rem/1.4 var(--font-mono); font-variant-numeric: tabular-nums; }
+
+.switch { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+.switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.track {
+  width: 42px; height: 24px; border-radius: 12px; background: var(--line); position: relative; flex: none;
+  transition: background .15s;
+}
+.track::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--panel); box-shadow: 0 1px 2px rgba(0,0,0,.3); transition: transform .15s;
+}
+.switch input:checked + .track { background: var(--accent); }
+.switch input:checked + .track::after { transform: translateX(18px); }
+.switch input:disabled + .track { opacity: .45; }
+.switch input:focus-visible + .track { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* Viewport */
+main { position: relative; min-width: 0; min-height: 0; background: var(--sky); }
+#builder, #globe { position: absolute; inset: 0; }
+#builder canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.hud {
+  position: absolute; left: 14px; bottom: 14px; right: 14px;
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; flex-wrap: wrap;
+  pointer-events: none;
+}
+.chip {
+  pointer-events: auto;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 7px 13px; font-size: 0.82rem; color: var(--ink);
+}
+.chip b { font-family: var(--font-mono); font-weight: 600; }
+.viewtabs {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  display: flex; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 4px;
+  z-index: 5; box-shadow: 0 2px 10px rgba(0,0,0,.12);
+}
+.viewtabs button {
+  border: 0; background: transparent; color: var(--ink); cursor: pointer;
+  padding: 8px 16px; border-radius: 999px; font: 700 0.86rem/1 var(--font-body);
+}
+.viewtabs button[aria-pressed="true"] { background: var(--ink); color: var(--panel); }
+.loading {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font: 600 1rem var(--font-display); color: var(--muted); background: var(--sky);
+}
+.toast {
+  position: absolute; top: 64px; left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: var(--bg); padding: 9px 14px; border-radius: 8px;
+  font-size: 0.85rem; z-index: 6; max-width: calc(100% - 32px);
+}
+.basemap-toggle {
+  width: auto !important; padding: 0 10px !important; gap: 6px; display: inline-flex !important; align-items: center;
+  font: 600 12px/1 var(--font-body); color: #323232; background: #fff; border: 0; cursor: pointer;
+}
+.basemap-toggle[aria-pressed="false"] { color: #fff; background: #6e6e6e; }
+
+@media (max-width: 760px) {
+  .app { grid-template-columns: minmax(0,1fr); grid-template-rows: 58vh auto; height: auto; }
+  main { grid-row: 1; min-height: 58vh; }
+  aside { grid-row: 2; border-right: 0; border-top: 1px solid var(--line); overflow: visible; }
+  .viewtabs button { padding: 7px 12px; }
+}
+.confirm {
+  border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px;
+  background: var(--panel); color: var(--ink); max-width: min(380px, calc(100% - 32px));
+  box-shadow: 0 18px 50px rgba(0,0,0,.3);
+}
+.confirm::backdrop { background: rgba(10,12,18,.45); }
+.confirm h3 { font: 800 1.2rem/1.2 var(--font-display); margin: 0 0 8px; }
+.confirm p { margin: 0 0 18px; color: var(--muted); }
+.confirm .row { justify-content: flex-end; }
+.agol-dlg { width: min(420px, calc(100% - 32px)); max-width: none; }
+.agol-dlg > p { margin-bottom: 14px; }
+.dlg-form { display: grid; gap: 10px; }
+.dlg-form .field input { font-family: var(--font-body); }
+.confirm .dlg-note { font-size: 0.8rem; color: var(--muted); margin: 4px 0 0; }
+.confirm .dlg-error { color: var(--warn); font-size: 0.86rem; font-weight: 700; margin: 0; }
+.confirm .dlg-ok { color: var(--ok); font-weight: 700; margin: 0 0 10px; }
+.dlg-actions { margin-top: 6px; }
+.share { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px 10px; margin: 12px 0 0; display: grid; gap: 6px; }
+.share legend { font-size: 0.8rem; color: var(--muted); padding: 0 4px; }
+.share label { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+.share label.disabled { opacity: .45; cursor: not-allowed; }
+.share label span { line-height: 1.35; }
+.share label input { align-self: flex-start; margin-top: 3px; }
+.share:disabled { opacity: .45; }
+.copypair { grid-template-columns: 1fr auto; }
+.agol-status { font-size: 0.84rem; margin: 0 0 4px; color: var(--muted); }
+.agol-status b { color: var(--ink); }
+#agolSaveBtn { width: 100%; justify-content: center; }
+.export-agol { margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+.export-agol h3 { font: 700 0.8rem/1 var(--font-body); margin: 0; color: var(--ink); }
+a.btn { text-decoration: none; }
+.btn:disabled { opacity: .5; cursor: progress; }
+.btn.danger { background: var(--warn); border-color: var(--warn); color: #fff; }
+.credit { margin: auto 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); }
+.credit a { color: var(--ink); font-weight: 700; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.credit a:hover { color: var(--accent); }
+.settings { border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+.settings summary {
+  list-style: none; cursor: pointer; padding: 12px 14px 12px 36px; position: relative;
+  display: grid; gap: 3px; border-radius: 10px;
+}
+.settings summary::-webkit-details-marker { display: none; }
+.settings summary::before {
+  content: ""; position: absolute; left: 15px; top: 17px; width: 7px; height: 7px;
+  border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+  transform: rotate(-45deg); transition: transform .15s;
+}
+.settings[open] summary::before { transform: rotate(45deg); top: 15px; }
+.settings summary:hover .sum-title { color: var(--accent); }
+.sum-title { font: 700 0.72rem/1 var(--font-body); text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); }
+.sum-detail { font: 500 0.78rem/1.3 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.settings[open] .sum-detail { display: none; }
+.settings-body { padding: 2px 14px 14px; display: grid; gap: 6px; }
+.settings-body h3 { font: 700 0.8rem/1 var(--font-body); margin: 10px 0 4px; color: var(--ink); }
+.settings-body h3:first-child { margin-top: 2px; }
+.settings-body .hint { margin: 2px 0 0; }
+.stamps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.stamp {
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px;
+  padding: 4px 4px 7px; cursor: pointer; display: grid; justify-items: center; gap: 2px;
+  font: 700 0.76rem/1.1 var(--font-body);
+}
+.stamp img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
+.stamp:hover { border-color: var(--muted); }
+.stamp[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent) inset; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 42 30" aria-hidden="true">
+        <rect x="1" y="9" width="40" height="20" rx="2" fill="var(--accent)"/>
+        <rect x="5" y="3" width="10" height="7" rx="2" fill="var(--accent)"/>
+        <rect x="27" y="3" width="10" height="7" rx="2" fill="var(--accent)"/>
+        <rect x="1" y="24" width="40" height="5" rx="1" fill="#000" opacity=".18"/>
+      </svg>
+      <div>
+        <h1>GeoBlocks</h1>
+        <p>Build it. Put it on the map.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>Brick color <span id="colorName">Bright Red</span></h2>
+      <div class="swatches" id="swatches" role="group" aria-label="Brick color"></div>
+    </section>
+
+    <section>
+      <h2>Brick size <span id="sizeName">2 × 4</span></h2>
+      <div class="sizes" id="sizes" role="group" aria-label="Brick size"></div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn" id="rotateBtn" type="button">Rotate <kbd>R</kbd></button>
+        <button class="btn" id="eraseBtn" type="button" aria-pressed="false">Erase <kbd>E</kbd></button>
+        <button class="btn" id="undoBtn" type="button">Undo</button>
+      </div>
+      <p class="hint">Click to place. Right-click a brick to remove it (or use Erase mode). Drag to orbit, right-drag to pan, scroll to zoom.</p>
+    </section>
+
+    <details class="settings" id="stampsPanel">
+      <summary>
+        <span class="sum-title">Stamps</span>
+        <span class="sum-detail">Ready-made objects to drop on the baseplate</span>
+      </summary>
+      <div class="settings-body">
+        <div class="stamps" id="stamps" role="group" aria-label="Stamps"></div>
+        <p class="hint">Pick a stamp, then click the baseplate to drop it. Press <kbd>R</kbd> to turn it, <kbd>Esc</kbd> to go back to single bricks.</p>
+      </div>
+    </details>
+
+    <details class="settings" id="mapSettings">
+      <summary>
+        <span class="sum-title">Map settings</span>
+        <span class="sum-detail" id="settingsSummary">38.4369°, −96.5594° · 3 m / stud</span>
+      </summary>
+      <div class="settings-body">
+        <h3>Geographic origin</h3>
+        <div class="fields2">
+          <div class="field">
+            <label for="lat">Latitude (°)</label>
+            <input type="number" id="lat" step="0.000001" min="-89.9" max="89.9" value="38.436906">
+          </div>
+          <div class="field">
+            <label for="lon">Longitude (°)</label>
+            <input type="number" id="lon" step="0.000001" min="-180" max="180" value="-96.559436">
+          </div>
+        </div>
+        <div class="field" style="margin-top:4px">
+          <label for="preset">Preset locations</label>
+          <select id="preset">
+            <option value="">Choose a place…</option>
+            <option value="38.436906,-96.559436">Prairie (Flint Hills, Kansas)</option>
+            <option value="25.780000,-80.128700">Beach (Miami Beach, Florida)</option>
+            <option value="40.771500,-73.975000">NY City (Central Park)</option>
+            <option value="48.855600,2.298600">Paris (Champ de Mars)</option>
+            <option value="35.671700,139.694900">Tokyo (Yoyogi Park)</option>
+            <option value="-25.325000,131.036000">Uluru, Australia (plain north of the rock)</option>
+            <option value="-3.075800,37.353300">Mt Kilimanjaro (Uhuru Peak, Tanzania)</option>
+          </select>
+        </div>
+        <p class="hint">Decimal degrees. South latitudes and west longitudes are negative. The origin is the center of the baseplate.</p>
+
+        <h3>Rotation</h3>
+        <div class="field">
+          <label for="heading">Rotation from north (° clockwise)</label>
+          <input type="number" id="heading" step="1" min="0" max="359" value="0">
+        </div>
+
+        <h3>Scale</h3>
+        <div class="field">
+          <label for="blockLen">Length of one stud (a 1 × 1 brick)</label>
+          <div class="unitpair">
+            <input type="number" id="blockLen" step="0.1" min="0.01" value="3">
+            <select id="unit" aria-label="Unit">
+              <option value="m" selected>meters</option>
+              <option value="ft">feet</option>
+            </select>
+          </div>
+        </div>
+        <p class="hint">Brick height is 1.2 × the stud length, the same proportion as real toy bricks.</p>
+      </div>
+    </details>
+
+    <details class="settings" id="sizePanel">
+      <summary>
+        <span class="sum-title">Creation size</span>
+        <span class="sum-detail" id="sizeSummary">0 blocks</span>
+      </summary>
+      <div class="settings-body">
+        <dl class="stats">
+          <dt>Bricks</dt><dd id="stBricks">0</dd>
+          <dt>Footprint</dt><dd id="stFoot">–</dd>
+          <dt>Height</dt><dd id="stHeight">–</dd>
+        </dl>
+      </div>
+    </details>
+
+
+    <section>
+      <h2>File</h2>
+      <div class="row">
+        <button class="btn" id="saveBtn" type="button">Save file</button>
+        <button class="btn" id="openBtn" type="button">Open file…</button>
+      </div>
+      <input type="file" id="fileIn" accept=".geoblocks,.json" hidden>
+    </section>
+
+    <details class="settings" id="exportPanel">
+      <summary>
+        <span class="sum-title">Export</span>
+        <span class="sum-detail" id="exportSummary">Image or ArcGIS Online · not signed in</span>
+      </summary>
+      <div class="settings-body">
+      <div class="row">
+        <button class="btn" id="imageBtn" type="button">Export image</button>
+        <button class="btn" id="modelBtn" type="button">Export 3D model…</button>
+      </div>
+      <div class="export-agol">
+        <h3>ArcGIS Online</h3>
+        <p class="agol-status" id="agolStatus">Sign in to save your creation as a 3D web scene in ArcGIS Online.</p>
+        <div class="row">
+          <button class="btn" id="agolSignBtn" type="button">Sign in</button>
+        </div>
+        <div class="row">
+          <button class="btn primary" id="agolSaveBtn" type="button">Save GeoBlock creation to ArcGIS</button>
+        </div>
+      </div>
+      </div>
+    </details>
+
+    <div class="row">
+      <button class="btn" id="clearBtn" type="button">Clear blocks</button>
+    </div>
+
+    <p class="credit">Designed by <a href="https://tbaker.com" target="_blank" rel="noopener">Tom Baker</a>.</p>
+  </aside>
+
+  <main>
+    <div class="viewtabs" role="group" aria-label="View">
+      <button type="button" id="tabBuild" aria-pressed="true">Build</button>
+      <button type="button" id="tabMap" aria-pressed="false">3D Map</button>
+    </div>
+    <div id="builder"></div>
+    <div id="globe" hidden></div>
+    <div class="loading" id="globeLoading" hidden>Loading ArcGIS 3D map…</div>
+    <div class="toast" id="toast" hidden></div>
+    <div class="hud" id="hud">
+      <div class="chip" id="hudMode">Placing <b id="hudSize">2×4</b> · <span id="hudColor">Bright Red</span></div>
+      <div class="chip">1 stud = <b id="hudScale">3 m</b></div>
+    </div>
+  </main>
+</div>
+
+<dialog class="confirm" id="clearDlg" aria-labelledby="clearTitle">
+  <h3 id="clearTitle">Clear the whole creation?</h3>
+  <p id="clearMsg">This removes every block from the baseplate. You can bring them back with Undo.</p>
+  <form method="dialog" class="row">
+    <button class="btn" value="cancel" id="clearCancel" autofocus>Keep building</button>
+    <button class="btn danger" value="clear" id="clearOk">Clear all blocks</button>
+  </form>
+</dialog>
+<dialog class="confirm agol-dlg" id="modelDlg" aria-labelledby="modelTitle">
+  <h3 id="modelTitle">Export 3D model</h3>
+  <form id="modelForm" class="dlg-form" novalidate>
+    <fieldset class="share">
+      <legend>File type</legend>
+      <label><input type="radio" name="mfmt" value="glb" checked> <span><b>GLB</b> · full color, real-world size in meters. Opens in 3D viewers, Blender, and ArcGIS.</span></label>
+      <label><input type="radio" name="mfmt" value="stl"> <span><b>STL</b> · for 3D printing, one color.</span></label>
+    </fieldset>
+    <fieldset class="share" id="stlSizeSet" disabled>
+      <legend>Print size (STL)</legend>
+      <label><input type="radio" name="msize" value="toy" checked> <span>Real toy size (8 mm per stud)</span></label>
+      <label><input type="radio" name="msize" value="fit"> <span>Fit in 150 mm</span></label>
+    </fieldset>
+    <p class="dlg-note" id="modelInfo"></p>
+    <div class="row dlg-actions">
+      <button class="btn" type="button" id="modelCancel">Cancel</button>
+      <button class="btn primary" type="submit" id="modelOk">Export</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="confirm agol-dlg" id="signInDlg" aria-labelledby="signInTitle">
+  <h3 id="signInTitle">Sign in to ArcGIS Online</h3>
+  <p>Use your ArcGIS Online username and password.</p>
+  <form id="signInForm" class="dlg-form" novalidate>
+    <div class="field">
+      <label for="agolUser">Username</label>
+      <input type="text" id="agolUser" autocomplete="username" autocapitalize="off" spellcheck="false" required>
+    </div>
+    <div class="field">
+      <label for="agolPass">Password</label>
+      <input type="password" id="agolPass" autocomplete="current-password" required>
+    </div>
+    <p class="dlg-note">Your password goes only to arcgis.com and is never stored by GeoBlocks. Accounts that sign in with a school Google, Microsoft, or other single sign-on button can't sign in here.</p>
+    <p class="dlg-error" id="signInError" role="alert" hidden></p>
+    <div class="row dlg-actions">
+      <button class="btn" type="button" id="signInCancel">Cancel</button>
+      <button class="btn primary" type="submit" id="signInOk">Sign in</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="confirm agol-dlg" id="agolSaveDlg" aria-labelledby="agolSaveTitle">
+  <h3 id="agolSaveTitle">Save to ArcGIS Online</h3>
+  <form id="agolSaveForm" class="dlg-form" novalidate>
+    <div id="agolSaveFields">
+      <div class="field">
+        <label for="mapTitle">Web scene name</label>
+        <input type="text" id="mapTitle" maxlength="250" required>
+      </div>
+      <div class="field" style="margin-top:10px">
+        <label for="mapSummary">Summary (optional)</label>
+        <input type="text" id="mapSummary" maxlength="250">
+      </div>
+      <fieldset class="share">
+        <legend>Who can see it</legend>
+        <label><input type="radio" name="share" value="private" checked> Only me</label>
+        <label id="shareOrgLabel"><input type="radio" name="share" value="org"> <span id="shareOrgText">My organization</span></label>
+        <label id="sharePublicLabel"><input type="radio" name="share" value="public"> Everyone (public)</label>
+      </fieldset>
+      <p class="dlg-note">Saves a 3D web scene plus a 3D layer of your blocks called "GeoBlocks." Your ArcGIS account needs permission to create hosted layers (a Creator account with publishing rights).</p>
+    </div>
+    <div id="agolSaveResult" hidden>
+      <p class="dlg-ok" id="agolSaveMsg">Saved.</p>
+      <div class="field">
+        <label for="agolUrl">Web scene link</label>
+        <div class="unitpair copypair">
+          <input type="text" id="agolUrl" readonly>
+          <button class="btn" type="button" id="agolCopy">Copy</button>
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <a class="btn" id="agolOpenMap" href="#" target="_blank" rel="noopener">Open in Scene Viewer</a>
+        <a class="btn" id="agolOpenItem" href="#" target="_blank" rel="noopener">Scene details</a>
+        <a class="btn" id="agolOpenLayer" href="#" target="_blank" rel="noopener">Layer details</a>
+      </div>
+    </div>
+    <p class="dlg-error" id="agolSaveError" role="alert" hidden></p>
+    <div class="row dlg-actions">
+      <button class="btn" type="button" id="agolSaveCancel">Cancel</button>
+      <button class="btn primary" type="submit" id="agolSaveOk">Save web scene</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- three.js (UMD) must load before the ArcGIS AMD loader is added -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/exporters/GLTFExporter.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/exporters/STLExporter.js"></script>
+<script>
+(() => {
+"use strict";
+
+/* ---------- Palette & sizes ---------- */
+const COLORS = [
+  ["Bright Red", "#c91a09"], ["Bright Blue", "#0055bf"], ["Bright Yellow", "#f2cd37"],
+  ["Dark Green", "#237841"], ["Bright Orange", "#fe8a18"], ["White", "#f4f4f4"],
+  ["Black", "#1b2a34"], ["Light Gray", "#a0a5a9"], ["Dark Gray", "#6c6e68"],
+  ["Tan", "#e4cd9e"], ["Reddish Brown", "#582a12"], ["Lime", "#bbe90b"],
+  ["Azure", "#36aebf"], ["Pink", "#e4adc8"]
+];
+const SIZES = [[1,1],[1,2],[1,3],[1,4],[2,2],[2,3],[2,4],[2,6]];
+const PLATE = 64;             // baseplate is 64 × 64 studs
+const HALF = PLATE / 2;
+const BH = 1.2;               // brick height in stud units
+const MAX_LEVEL = 60;
+
+const state = {
+  color: 0, size: 6, rotated: false, erase: false, stamp: null, stampRot: 0,
+  bricks: [], undo: [], view: "build"
+};
+const $ = (id) => document.getElementById(id);
+
+/* ---------- UI: swatches & sizes ---------- */
+COLORS.forEach(([name, hex], i) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "swatch"; b.style.background = hex;
+  b.title = name; b.setAttribute("aria-label", name);
+  b.addEventListener("click", () => { state.color = i; setErase(false); state.stamp = null; syncUI(); });
+  $("swatches").appendChild(b);
+});
+SIZES.forEach(([w, d], i) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "size";
+  const cell = 7, pw = d * cell, ph = w * cell;
+  let studs = "";
+  for (let a = 0; a < d; a++) for (let c = 0; c < w; c++)
+    studs += `<circle cx="${a*cell + cell/2}" cy="${c*cell + cell/2}" r="2.1" fill="currentColor" opacity=".35"/>`;
+  b.innerHTML = `<svg viewBox="-1 -1 ${6*cell+2} ${2*cell+2}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <g transform="translate(${(6*cell - pw)/2},${(2*cell - ph)/2})">
+      <rect width="${pw}" height="${ph}" rx="1.5" fill="currentColor" opacity=".18" stroke="currentColor" stroke-opacity=".5"/>${studs}</g></svg>${w}×${d}`;
+  b.addEventListener("click", () => { state.size = i; setErase(false); state.stamp = null; syncUI(); });
+  $("sizes").appendChild(b);
+});
+
+function footprint() {
+  const [w, d] = SIZES[state.size];
+  return state.rotated ? [w, d] : [d, w];   // [x-extent, z-extent]
+}
+function lengthMeters() {
+  const v = parseFloat($("blockLen").value);
+  const len = isFinite(v) && v > 0 ? v : 1;
+  return $("unit").value === "ft" ? len * 0.3048 : len;
+}
+function fmtLen(m) {
+  if ($("unit").value === "ft") {
+    const ft = m / 0.3048;
+    return (ft >= 100 ? ft.toFixed(0) : ft.toFixed(1)) + " ft";
+  }
+  return (m >= 100 ? m.toFixed(0) : m.toFixed(1)) + " m";
+}
+
+function syncUI() {
+  [...$("swatches").children].forEach((el, i) => el.setAttribute("aria-pressed", String(i === state.color)));
+  [...$("sizes").children].forEach((el, i) => el.setAttribute("aria-pressed", String(i === state.size)));
+  const [w, d] = SIZES[state.size];
+  $("colorName").textContent = COLORS[state.color][0];
+  $("sizeName").textContent = `${w} × ${d}`;
+  $("eraseBtn").setAttribute("aria-pressed", String(state.erase));
+  $("hudMode").innerHTML = state.erase
+    ? "Erasing · click a brick to remove it"
+    : state.stamp !== null
+      ? `Stamping <b>${STAMPS[state.stamp].name}</b> · click to drop · <kbd>Esc</kbd> to stop`
+      : `Placing <b>${w}×${d}</b> · ${COLORS[state.color][0]}`;
+  [...$("stamps").children].forEach((el, i) => el.setAttribute("aria-pressed", String(i === state.stamp)));
+  const len = parseFloat($("blockLen").value) || 0;
+  $("hudScale").textContent = `${len} ${$("unit").value === "ft" ? "ft" : "m"}`;
+  const la = parseFloat($("lat").value), lo = parseFloat($("lon").value), hd = parseFloat($("heading").value) || 0;
+  const fmtDeg = (v) => isFinite(v) ? v.toFixed(4).replace("-", "−") + "°" : "–";
+  $("settingsSummary").textContent = `${fmtDeg(la)}, ${fmtDeg(lo)}` + (hd ? ` · ${hd}° rotation` : "") + ` · ${len} ${$("unit").value === "ft" ? "ft" : "m"} / stud`;
+  updateStats();
+  updateGhost();
+}
+function setErase(on) { state.erase = on; if (on) state.stamp = null; }
+
+function updateStats() {
+  const b = state.bricks;
+  $("stBricks").textContent = b.length;
+  $("sizeSummary").textContent = `${b.length} block${b.length === 1 ? "" : "s"}`;
+  if (!b.length) { $("stFoot").textContent = "–"; $("stHeight").textContent = "–"; return; }
+  let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity, top = 0;
+  for (const k of b) {
+    x0 = Math.min(x0, k.x); x1 = Math.max(x1, k.x + k.w);
+    z0 = Math.min(z0, k.z); z1 = Math.max(z1, k.z + k.d);
+    top = Math.max(top, k.level + 1);
+  }
+  const L = lengthMeters();
+  $("stFoot").textContent = `${x1-x0} × ${z1-z0} studs = ${fmtLen((x1-x0)*L)} × ${fmtLen((z1-z0)*L)}`;
+  $("stHeight").textContent = `${top} brick${top>1?"s":""} = ${fmtLen(top*BH*L)}`;
+  $("sizeSummary").textContent = `${b.length} block${b.length === 1 ? "" : "s"} · ${fmtLen((x1-x0)*L)} × ${fmtLen((z1-z0)*L)} · ${fmtLen(top*BH*L)} tall`;
+}
+
+/* ---------- three.js scene ---------- */
+const host = $("builder");
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+host.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+camera.position.set(0, 64, 82);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0, 5);
+controls.enableDamping = true;
+controls.maxPolarAngle = Math.PI * 0.49;
+controls.minDistance = 6; controls.maxDistance = 260;
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8f80, 0.75));
+const sun = new THREE.DirectionalLight(0xffffff, 0.85);
+sun.position.set(-30, 70, 38);
+sun.castShadow = true;
+sun.shadow.mapSize.set(4096, 4096);
+Object.assign(sun.shadow.camera, { left: -48, right: 48, top: 48, bottom: -48, near: 1, far: 200 });
+sun.shadow.bias = -0.0005;
+scene.add(sun);
+
+// Baseplate
+const plateMat = new THREE.MeshStandardMaterial({ color: 0x4b9b4f, roughness: 0.8 });
+const ground = new THREE.Mesh(new THREE.BoxGeometry(PLATE, 0.3, PLATE), plateMat);
+ground.position.y = -0.15; ground.receiveShadow = true;
+scene.add(ground);
+const studGeo = new THREE.CylinderGeometry(0.3, 0.3, 0.18, 16);
+const plateStuds = new THREE.InstancedMesh(studGeo, plateMat, PLATE * PLATE);
+{
+  const m = new THREE.Matrix4(); let n = 0;
+  for (let i = 0; i < PLATE; i++) for (let j = 0; j < PLATE; j++) {
+    m.makeTranslation(-HALF + i + 0.5, 0.09, -HALF + j + 0.5); plateStuds.setMatrixAt(n++, m);
+  }
+  plateStuds.receiveShadow = true;
+}
+scene.add(plateStuds);
+
+// North arrow on the plate edge
+const north = new THREE.Group();
+{
+  const mat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const tri = new THREE.Shape();
+  tri.moveTo(0, 1.4); tri.lineTo(0.8, -0.6); tri.lineTo(0, -0.1); tri.lineTo(-0.8, -0.6); tri.lineTo(0, 1.4);
+  const arrow = new THREE.Mesh(new THREE.ShapeGeometry(tri), mat);
+  arrow.rotation.x = -Math.PI / 2;
+  north.add(arrow);
+  const c = document.createElement("canvas"); c.width = c.height = 64;
+  const g = c.getContext("2d"); g.fillStyle = "#fff"; g.font = "bold 50px sans-serif";
+  g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("N", 32, 34);
+  const label = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 1.6),
+    new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true }));
+  label.rotation.x = -Math.PI / 2; label.position.z = 2.3;
+  north.add(label);
+  north.scale.setScalar(1.5);
+  north.position.set(0, 0.02, HALF + 3.4);
+}
+scene.add(north);
+
+// Brick building blocks
+const matCache = {};
+function brickMat(i) {
+  if (!matCache[i]) matCache[i] = new THREE.MeshStandardMaterial({ color: COLORS[i][1], roughness: 0.35, metalness: 0.0 });
+  return matCache[i];
+}
+const brickGroup = new THREE.Group();
+scene.add(brickGroup);
+const boxGeoCache = {};
+function boxGeo(w, d) {
+  const k = w + "x" + d;
+  if (!boxGeoCache[k]) boxGeoCache[k] = new THREE.BoxGeometry(w - 0.04, BH, d - 0.04);
+  return boxGeoCache[k];
+}
+function makeBrickMesh(b) {
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(boxGeo(b.w, b.d), brickMat(b.color));
+  body.position.set(b.x + b.w / 2, b.level * BH + BH / 2, b.z + b.d / 2);
+  body.castShadow = body.receiveShadow = true;
+  body.userData.brick = b;
+  g.add(body);
+  for (let i = 0; i < b.w; i++) for (let j = 0; j < b.d; j++) {
+    const s = new THREE.Mesh(studGeo, brickMat(b.color));
+    s.position.set(b.x + i + 0.5, (b.level + 1) * BH + 0.09, b.z + j + 0.5);
+    s.castShadow = true;
+    s.userData.brick = b; s.userData.stud = true;
+    g.add(s);
+  }
+  b.mesh = g;
+  return g;
+}
+
+// Occupancy
+const occ = new Map();
+const key = (x, z, l) => `${x},${z},${l}`;
+function cellsOf(b) {
+  const out = [];
+  for (let i = 0; i < b.w; i++) for (let j = 0; j < b.d; j++) out.push(key(b.x + i, b.z + j, b.level));
+  return out;
+}
+function canPlace(b) {
+  if (b.level < 0 || b.level >= MAX_LEVEL) return false;
+  if (b.x < -HALF || b.z < -HALF || b.x + b.w > HALF || b.z + b.d > HALF) return false;
+  return cellsOf(b).every((c) => !occ.has(c));
+}
+function addBrick(b, record = true) {
+  state.bricks.push(b);
+  cellsOf(b).forEach((c) => occ.set(c, b));
+  brickGroup.add(makeBrickMesh(b));
+  if (record) pushUndo({ op: "add", b });
+  changed();
+}
+function removeBrick(b, record = true) {
+  const i = state.bricks.indexOf(b);
+  if (i < 0) return;
+  state.bricks.splice(i, 1);
+  cellsOf(b).forEach((c) => occ.delete(c));
+  brickGroup.remove(b.mesh);
+  if (record) pushUndo({ op: "remove", b });
+  changed();
+}
+function clearAll(record = true) {
+  if (record && state.bricks.length) pushUndo({ op: "clear", list: state.bricks.slice() });
+  state.bricks.slice().forEach((b) => removeBrick(b, false));
+}
+function pushUndo(entry) { state.undo.push(entry); if (state.undo.length > 300) state.undo.shift(); }
+function undo() {
+  const e = state.undo.pop();
+  if (!e) return;
+  if (e.op === "add") removeBrick(e.b, false);
+  else if (e.op === "remove") addBrick(e.b, false);
+  else if (e.op === "clear") e.list.forEach((b) => addBrick(b, false));
+  else if (e.op === "stamp") e.list.forEach((b) => removeBrick(b, false));
+}
+
+// Ghost (placement preview)
+const ghostMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.45, depthWrite: false });
+const ghostEdgesMat = new THREE.LineBasicMaterial({ color: 0xffffff });
+const ghost = new THREE.Group();
+const ghostBox = new THREE.Mesh(new THREE.BoxGeometry(1, BH, 1), ghostMat);
+const ghostEdges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1, BH, 1)), ghostEdgesMat);
+ghost.add(ghostBox, ghostEdges);
+ghost.visible = false;
+scene.add(ghost);
+let ghostTarget = null;
+let lastPointer = null;
+
+function updateGhost() {
+  const [fx, fz] = footprint();
+  ghost.scale.set(fx - 0.02, 1, fz - 0.02);
+  if (lastPointer) aim(lastPointer);
+}
+
+// Raycasting
+const ray = new THREE.Raycaster();
+const ndc = new THREE.Vector2();
+function pick(ev) {
+  const r = renderer.domElement.getBoundingClientRect();
+  ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(ndc, camera);
+  const hits = ray.intersectObjects([ground, ...brickGroup.children], true);
+  return hits[0] || null;
+}
+function aim(ev) {
+  const hit = pick(ev);
+  ghostTarget = null;
+  if (!hit) { ghost.visible = false; stampGhost.visible = false; stampTarget = null; return; }
+  const b = hit.object.userData.brick;
+  if (state.erase) {
+    ghost.visible = false; stampGhost.visible = false; stampTarget = null;
+    highlight(b || null);
+    return;
+  }
+  highlight(null);
+  let normal = hit.face ? hit.face.normal.clone() : new THREE.Vector3(0, 1, 0);
+  if (hit.object.userData.stud || hit.object === ground) normal.set(0, 1, 0);
+  const p = hit.point.clone().addScaledVector(normal, 0.05);
+  let level;
+  if (!b) level = 0;
+  else if (normal.y > 0.5) level = b.level + 1;
+  else if (normal.y < -0.5) level = b.level - 1;
+  else level = b.level;
+  const cx = Math.floor(p.x), cz = Math.floor(p.z);
+  if (state.stamp !== null) { aimStamp(cx, cz, level); return; }
+  stampGhost.visible = false; stampTarget = null;
+  const [fx, fz] = footprint();
+  const nb = {
+    x: cx - Math.floor((fx - 1) / 2), z: cz - Math.floor((fz - 1) / 2),
+    w: fx, d: fz, level, color: state.color
+  };
+  const ok = canPlace(nb);
+  ghost.position.set(nb.x + fx / 2, level * BH + BH / 2, nb.z + fz / 2);
+  ghostMat.color.set(ok ? COLORS[state.color][1] : "#ff3b30");
+  ghostEdgesMat.color.set(ok ? "#ffffff" : "#ff3b30");
+  ghost.visible = level >= 0;
+  ghostTarget = ok ? nb : null;
+}
+let highlighted = null;
+function highlight(b) {
+  if (highlighted === b) return;
+  if (highlighted && highlighted.mesh) highlighted.mesh.children.forEach((m) => m.material = brickMat(highlighted.color));
+  highlighted = b;
+  if (b && b.mesh) {
+    const hm = new THREE.MeshStandardMaterial({ color: COLORS[b.color][1], emissive: 0xff2200, emissiveIntensity: 0.55 });
+    b.mesh.children.forEach((m) => m.material = hm);
+  }
+}
+
+
+/* ---------- Stamps: ready-made objects ---------- */
+const C = Object.fromEntries(COLORS.map(([n], i) => [n, i]));
+function stampBuilder() {
+  const list = [], used = new Set();
+  const free = (x, z, w, d, l) => { for (let i = 0; i < w; i++) for (let j = 0; j < d; j++) if (used.has(`${x+i},${z+j},${l}`)) return false; return true; };
+  const add = (x, z, w, d, level, color) => {
+    if (!free(x, z, w, d, level)) return;
+    for (let i = 0; i < w; i++) for (let j = 0; j < d; j++) used.add(`${x+i},${z+j},${level}`);
+    list.push({ x, z, w, d, level, color });
+  };
+  // fill a rectangle with 2-deep strips of up to 4 long
+  const fill = (x0, z0, w, d, level, color) => {
+    for (let z = z0; z < z0 + d; z += 2) for (let x = x0; x < x0 + w; x += 4)
+      add(x, z, Math.min(4, x0 + w - x), Math.min(2, z0 + d - z), level, color);
+  };
+  return { list, add, fill };
+}
+const STAMPS = [
+  { name: "House", make() {
+    const { list, add, fill } = stampBuilder(); const W = 6, D = 5;
+    fill(0, 0, W, D, 0, C["Light Gray"]);
+    for (let l = 1; l <= 3; l++) {
+      const off = l % 2 ? 0 : 1;
+      // door on the front (z = D-1), windows on the sides
+      if (l <= 2) { add(2, D - 1, 2, 1, l, C["Reddish Brown"]); }
+      if (l === 2) { add(0, 2, 1, 1, l, C["Azure"]); add(W - 1, 2, 1, 1, l, C["Azure"]); add(1, 0, 1, 1, l, C["Azure"]); add(4, 0, 1, 1, l, C["Azure"]); }
+      for (let x = off ? -1 : 0; x < W; x += 2) {
+        const xs = Math.max(0, x), w = Math.min(x + 2, W) - xs;
+        add(xs, 0, w, 1, l, C["Bright Red"]); add(xs, D - 1, w, 1, l, C["Bright Red"]);
+        if (w === 2) { add(xs, 0, 1, 1, l, C["Bright Red"]); add(xs + 1, 0, 1, 1, l, C["Bright Red"]); add(xs, D - 1, 1, 1, l, C["Bright Red"]); add(xs + 1, D - 1, 1, 1, l, C["Bright Red"]); }
+      }
+      for (let z = 1; z < D - 1; z++) { add(0, z, 1, 1, l, C["Bright Red"]); add(W - 1, z, 1, 1, l, C["Bright Red"]); }
+    }
+    fill(0, 0, W, D, 4, C["Bright Blue"]);
+    fill(1, 1, W - 2, D - 2, 5, C["Bright Blue"]);
+    add(4, 1, 1, 1, 6, C["Dark Gray"]); add(4, 1, 1, 1, 7, C["Dark Gray"]);
+    return list; } },
+  { name: "Tree", make() {
+    const { list, add } = stampBuilder();
+    for (let l = 0; l < 3; l++) add(1, 1, 1, 1, l, C["Reddish Brown"]);
+    add(0, 0, 3, 1, 3, C["Dark Green"]); add(0, 1, 1, 2, 3, C["Dark Green"]); add(2, 1, 1, 2, 3, C["Dark Green"]); add(1, 1, 1, 1, 3, C["Dark Green"]); add(1, 2, 1, 1, 3, C["Dark Green"]);
+    add(0, 0, 1, 3, 4, C["Dark Green"]); add(1, 0, 2, 2, 4, C["Dark Green"]); add(1, 2, 2, 1, 4, C["Dark Green"]);
+    add(1, 1, 1, 1, 5, C["Lime"]);
+    return list; } },
+  { name: "Pine tree", make() {
+    const { list, add } = stampBuilder();
+    add(2, 2, 1, 1, 0, C["Reddish Brown"]); add(2, 2, 1, 1, 1, C["Reddish Brown"]);
+    add(0, 0, 5, 1, 2, C["Dark Green"]); add(0, 4, 5, 1, 2, C["Dark Green"]); add(0, 1, 1, 3, 2, C["Dark Green"]); add(4, 1, 1, 3, 2, C["Dark Green"]); add(1, 1, 3, 3, 2, C["Dark Green"]);
+    add(1, 1, 3, 1, 3, C["Dark Green"]); add(1, 2, 3, 1, 3, C["Dark Green"]); add(1, 3, 3, 1, 3, C["Dark Green"]);
+    add(1, 2, 3, 1, 4, C["Dark Green"]); add(2, 1, 1, 1, 4, C["Dark Green"]); add(2, 3, 1, 1, 4, C["Dark Green"]);
+    add(2, 2, 1, 1, 5, C["Dark Green"]); add(2, 2, 1, 1, 6, C["Dark Green"]);
+    return list; } },
+  { name: "Car", make() {
+    const { list, add } = stampBuilder();
+    add(0, 0, 1, 2, 0, C["Black"]); add(3, 0, 1, 2, 0, C["Black"]);
+    add(0, 0, 4, 2, 1, C["Bright Blue"]);
+    add(0, 0, 1, 2, 2, C["Bright Blue"]); add(1, 0, 2, 2, 2, C["Azure"]); add(3, 0, 1, 1, 2, C["Bright Yellow"]); add(3, 1, 1, 1, 2, C["Bright Yellow"]);
+    add(1, 0, 2, 2, 3, C["Bright Blue"]);
+    return list; } },
+  { name: "Bench", make() {
+    const { list, add } = stampBuilder();
+    add(0, 0, 1, 1, 0, C["Dark Gray"]); add(3, 0, 1, 1, 0, C["Dark Gray"]); add(0, 1, 1, 1, 0, C["Dark Gray"]); add(3, 1, 1, 1, 0, C["Dark Gray"]);
+    add(0, 0, 4, 1, 1, C["Reddish Brown"]); add(0, 1, 4, 1, 1, C["Reddish Brown"]);
+    add(0, 1, 4, 1, 2, C["Reddish Brown"]);
+    return list; } },
+  { name: "Street lamp", make() {
+    const { list, add } = stampBuilder();
+    add(0, 0, 2, 2, 0, C["Dark Gray"]);
+    for (let l = 1; l <= 5; l++) add(0, 0, 1, 1, l, C["Black"]);
+    add(0, 0, 2, 1, 6, C["Black"]); add(1, 0, 1, 1, 5, C["Bright Yellow"]);
+    return list; } },
+  { name: "Fountain", make() {
+    const { list, add } = stampBuilder();
+    add(0, 0, 4, 4, 0, C["Light Gray"]);
+    add(0, 0, 4, 1, 1, C["Light Gray"]); add(0, 3, 4, 1, 1, C["Light Gray"]); add(0, 1, 1, 2, 1, C["Light Gray"]); add(3, 1, 1, 2, 1, C["Light Gray"]);
+    add(1, 1, 2, 2, 1, C["Azure"]);
+    add(1, 1, 1, 1, 2, C["White"]); add(2, 2, 1, 1, 2, C["Azure"]); add(1, 2, 1, 1, 2, C["Azure"]); add(2, 1, 1, 1, 2, C["Azure"]);
+    add(1, 1, 1, 1, 3, C["White"]);
+    return list; } },
+  { name: "Picket fence", make() {
+    const { list, add } = stampBuilder();
+    for (let x = 0; x < 6; x += 2) { add(x, 0, 1, 1, 0, C["White"]); add(x, 0, 1, 1, 1, C["White"]); add(x, 0, 1, 1, 2, C["White"]); }
+    add(1, 0, 1, 1, 1, C["White"]); add(3, 0, 1, 1, 1, C["White"]); add(5, 0, 1, 1, 1, C["White"]);
+    return list; } },
+  { name: "Flower bed", make() {
+    const { list, add } = stampBuilder();
+    add(0, 0, 4, 1, 0, C["Reddish Brown"]); add(0, 2, 4, 1, 0, C["Reddish Brown"]); add(0, 1, 1, 1, 0, C["Reddish Brown"]); add(3, 1, 1, 1, 0, C["Reddish Brown"]);
+    add(1, 1, 2, 1, 0, C["Dark Green"]);
+    add(1, 1, 1, 1, 1, C["Bright Red"]); add(2, 1, 1, 1, 1, C["Bright Yellow"]);
+    add(0, 0, 1, 1, 1, C["Pink"]); add(3, 2, 1, 1, 1, C["Bright Orange"]); add(2, 0, 1, 1, 1, C["Lime"]); add(1, 2, 1, 1, 1, C["Pink"]);
+    return list; } }
+];
+STAMPS.forEach((st) => {
+  st.bricks = st.make();
+  st.W = Math.max(...st.bricks.map((b) => b.x + b.w));
+  st.D = Math.max(...st.bricks.map((b) => b.z + b.d));
+});
+function rotatedStamp() {
+  const st = STAMPS[state.stamp];
+  let bricks = st.bricks.map((b) => ({ ...b })), W = st.W, D = st.D;
+  for (let r = 0; r < state.stampRot; r++) {
+    bricks = bricks.map((b) => ({ ...b, x: D - (b.z + b.d), z: b.x, w: b.d, d: b.w }));
+    [W, D] = [D, W];
+  }
+  return { bricks, W, D };
+}
+
+// Stamp ghost
+const stampGhost = new THREE.Group();
+stampGhost.visible = false;
+scene.add(stampGhost);
+let stampTarget = null, stampGhostMats = [];
+function buildStampGhost() {
+  stampGhost.clear(); stampGhostMats = [];
+  if (state.stamp === null) return;
+  const { bricks } = rotatedStamp();
+  for (const b of bricks) {
+    const m = new THREE.MeshBasicMaterial({ color: COLORS[b.color][1], transparent: true, opacity: 0.5, depthWrite: false });
+    m.userData.base = COLORS[b.color][1];
+    stampGhostMats.push(m);
+    const box = new THREE.Mesh(boxGeo(b.w, b.d), m);
+    box.position.set(b.x + b.w / 2, b.level * BH + BH / 2, b.z + b.d / 2);
+    stampGhost.add(box);
+  }
+}
+function aimStamp(cx, cz, level) {
+  ghost.visible = false;
+  const { bricks, W, D } = rotatedStamp();
+  const x0 = cx - Math.floor((W - 1) / 2), z0 = cz - Math.floor((D - 1) / 2);
+  const placed = bricks.map((b) => ({ ...b, x: b.x + x0, z: b.z + z0, level: b.level + level }));
+  const ok = level >= 0 && placed.every(canPlace);
+  stampGhost.position.set(x0, level * BH, z0);
+  stampGhostMats.forEach((m) => m.color.set(ok ? m.userData.base : "#ff3b30"));
+  stampGhost.visible = level >= 0;
+  stampTarget = ok ? placed : null;
+}
+function placeStamp(list) {
+  const added = [];
+  for (const b of list) if (canPlace(b)) { addBrick({ ...b }, false); added.push(state.bricks[state.bricks.length - 1]); }
+  if (added.length) pushUndo({ op: "stamp", list: added });
+}
+function selectStamp(i) {
+  if (state.stamp === i) { state.stamp = null; }
+  else { state.stamp = i; state.stampRot = 0; state.erase = false; }
+  buildStampGhost();
+  stampGhost.visible = false;
+  syncUI();
+}
+
+// Stamp buttons with rendered thumbnails
+(function makeStampButtons() {
+  let thumbR = null;
+  try { thumbR = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true }); thumbR.setSize(160, 120); } catch (e) {}
+  const ts = new THREE.Scene();
+  ts.add(new THREE.HemisphereLight(0xffffff, 0x8a8f80, 0.85));
+  const tl = new THREE.DirectionalLight(0xffffff, 0.7); tl.position.set(-4, 8, 6); ts.add(tl);
+  const tc = new THREE.PerspectiveCamera(32, 4 / 3, 0.1, 200);
+  STAMPS.forEach((st, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "stamp"; btn.setAttribute("aria-pressed", "false");
+    let img = "";
+    if (thumbR) {
+      const g = new THREE.Group();
+      st.bricks.forEach((b) => g.add(makeBrickMesh({ ...b })));
+      g.position.set(-st.W / 2, 0, -st.D / 2);
+      ts.add(g);
+      const H = Math.max(...st.bricks.map((b) => (b.level + 1) * BH));
+      const r = Math.max(st.W, st.D, H) * 1.55 + 2;
+      tc.position.set(r * 0.75, r * 0.7 + H * 0.2, r * 0.95); tc.lookAt(0, H * 0.4, 0);
+      thumbR.render(ts, tc);
+      img = `<img alt="" src="${thumbR.domElement.toDataURL("image/png")}">`;
+      ts.remove(g);
+    }
+    btn.innerHTML = `${img}<span>${st.name}</span>`;
+    btn.addEventListener("click", () => selectStamp(i));
+    $("stamps").appendChild(btn);
+  });
+  if (thumbR) { thumbR.dispose(); thumbR.forceContextLoss && thumbR.forceContextLoss(); }
+})();
+
+// Pointer handling: a click (little movement) places/removes; a drag orbits.
+let down = null;
+renderer.domElement.addEventListener("contextmenu", (ev) => ev.preventDefault());
+renderer.domElement.addEventListener("pointerdown", (ev) => { down = { x: ev.clientX, y: ev.clientY, btn: ev.button }; });
+renderer.domElement.addEventListener("pointermove", (ev) => { lastPointer = ev; if (!down) aim(ev); });
+renderer.domElement.addEventListener("pointerleave", () => { ghost.visible = false; stampGhost.visible = false; highlight(null); lastPointer = null; });
+renderer.domElement.addEventListener("pointerup", (ev) => {
+  if (!down) return;
+  const moved = Math.hypot(ev.clientX - down.x, ev.clientY - down.y);
+  const btn = down.btn; down = null;
+  if (moved > 6 || (btn !== 0 && btn !== 2)) { aim(ev); return; }
+  const hit = pick(ev);
+  if (btn === 2 || state.erase || ev.shiftKey) {
+    const b = hit && hit.object.userData.brick;
+    if (b) { highlight(null); removeBrick(b); }
+  } else {
+    aim(ev);
+    if (state.stamp !== null) {
+      if (stampTarget) placeStamp(stampTarget);
+      else if (pick(ev)) toast("There isn't room for that stamp here. Try an open spot.");
+    } else if (ghostTarget) addBrick({ ...ghostTarget });
+  }
+  aim(ev);
+});
+
+function resize() {
+  const w = host.clientWidth, h = host.clientHeight;
+  if (!w || !h) return;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(host);
+
+function applyTheme() {
+  const cs = getComputedStyle(document.documentElement);
+  scene.background = new THREE.Color(cs.getPropertyValue("--sky").trim() || "#c9dcec");
+  plateMat.color.set(cs.getPropertyValue("--plate").trim() || "#4b9b4f");
+}
+applyTheme();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
+new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+(function loop() {
+  requestAnimationFrame(loop);
+  if (state.view !== "build") return;
+  controls.update();
+  renderer.render(scene, camera);
+})();
+
+/* ---------- Controls wiring ---------- */
+function rotateTool() {
+  if (state.stamp !== null) { state.stampRot = (state.stampRot + 1) % 4; buildStampGhost(); if (lastPointer) aim(lastPointer); }
+  else { state.rotated = !state.rotated; syncUI(); }
+}
+$("rotateBtn").addEventListener("click", rotateTool);
+$("eraseBtn").addEventListener("click", () => { setErase(!state.erase); syncUI(); });
+$("undoBtn").addEventListener("click", undo);
+$("clearBtn").addEventListener("click", () => {
+  if (!state.bricks.length) { toast("The baseplate is already empty."); return; }
+  const n = state.bricks.length;
+  $("clearMsg").textContent = `This removes all ${n} block${n > 1 ? "s" : ""} from the baseplate. You can bring them back with Undo.`;
+  $("clearDlg").showModal();
+});
+$("clearDlg").addEventListener("close", () => {
+  if ($("clearDlg").returnValue !== "clear") return;
+  clearAll(); toast("Cleared. Press Undo to bring it back.");
+  if (state.view === "map") renderGlobe(false);
+});
+document.addEventListener("keydown", (ev) => {
+  if (ev.target.matches("input, select, textarea")) return;
+  if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "z") { ev.preventDefault(); undo(); return; }
+  if (ev.key === "r" || ev.key === "R") { rotateTool(); }
+  if (ev.key === "Escape" && state.stamp !== null) { state.stamp = null; syncUI(); }
+  if (ev.key === "e" || ev.key === "E") { setErase(!state.erase); syncUI(); }
+});
+["blockLen", "unit", "lat", "lon", "heading"].forEach((id) =>
+  $(id).addEventListener("change", () => { syncUI(); persist(); if (state.view === "map") renderGlobe(true); }));
+$("blockLen").addEventListener("input", syncUI);
+// Preset locations fill in latitude and longitude
+function matchPreset() {
+  const la = parseFloat($("lat").value), lo = parseFloat($("lon").value);
+  const hit = [...$("preset").options].find((o) => {
+    if (!o.value) return false;
+    const [pla, plo] = o.value.split(",").map(Number);
+    return Math.abs(pla - la) < 1e-6 && Math.abs(plo - lo) < 1e-6;
+  });
+  $("preset").value = hit ? hit.value : "";
+}
+$("preset").addEventListener("change", () => {
+  if (!$("preset").value) return;
+  const [la, lo] = $("preset").value.split(",");
+  $("lat").value = la; $("lon").value = lo;
+  syncUI(); persist();
+  if (state.view === "map") renderGlobe(true);
+  toast(`Moved to ${$("preset").selectedOptions[0].textContent}.`);
+});
+["lat", "lon"].forEach((id) => $(id).addEventListener("input", matchPreset));
+
+let toastTimer;
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 3200);
+}
+
+/* ---------- Save / load / export ---------- */
+function serialize() {
+  return {
+    app: "GeoBlocks", version: 1,
+    origin: { latitude: +$("lat").value, longitude: +$("lon").value, rotationDeg: +$("heading").value },
+    scale: { studLength: +$("blockLen").value, unit: $("unit").value },
+    bricks: state.bricks.map(({ x, z, w, d, level, color }) => ({ x, z, w, d, level, color: COLORS[color][0] }))
+  };
+}
+function load(data) {
+  if (!data || !Array.isArray(data.bricks)) throw new Error("This file has no bricks list.");
+  clearAll(false); state.undo = [];
+  if (data.origin) {
+    $("lat").value = data.origin.latitude ?? $("lat").value;
+    $("lon").value = data.origin.longitude ?? $("lon").value;
+    $("heading").value = data.origin.rotationDeg ?? 0;
+  }
+  matchPreset();
+  if (data.scale) { $("blockLen").value = data.scale.studLength ?? 3; $("unit").value = data.scale.unit === "ft" ? "ft" : "m"; }
+  for (const b of data.bricks) {
+    const ci = Math.max(0, COLORS.findIndex((c) => c[0] === b.color));
+    const nb = { x: b.x|0, z: b.z|0, w: b.w|0, d: b.d|0, level: b.level|0, color: ci };
+    if (nb.w > 0 && nb.d > 0 && canPlace(nb)) addBrick(nb, false);
+  }
+  syncUI();
+}
+function download(name, text, type) {
+  const url = URL.createObjectURL(text instanceof Blob ? text : new Blob([text], { type }));
+  const a = document.createElement("a"); a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+$("saveBtn").addEventListener("click", () => download("my-creation.geoblocks", JSON.stringify(serialize(), null, 2), "application/octet-stream"));
+$("openBtn").addEventListener("click", () => $("fileIn").click());
+$("fileIn").addEventListener("change", async (ev) => {
+  const f = ev.target.files[0]; if (!f) return;
+  try { load(JSON.parse(await f.text())); toast(`Opened ${f.name}`); if (state.view === "map") renderGlobe(true); }
+  catch (e) { toast("Couldn't open that file. Choose a .geoblocks file saved from GeoBlocks."); }
+  ev.target.value = "";
+});
+$("imageBtn").addEventListener("click", async () => {
+  const d = new Date(), pad = (n) => String(n).padStart(2, "0");
+  const stamp = `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}`;
+  try {
+    let blob, name;
+    if (state.view === "map") {
+      if (!view) throw new Error("map not ready");
+      const shot = await view.takeScreenshot({ format: "png" });
+      blob = dataUrlToBlob(shot.dataUrl);
+      name = `geoblocks-map-${stamp}.png`;
+    } else {
+      // Render, then copy the frame to a 2D canvas right away so the WebGL buffer isn't blank.
+      ghost.visible = false; stampGhost.visible = false; highlight(null);
+      controls.update();
+      renderer.render(scene, camera);
+      const src = renderer.domElement;
+      const out = document.createElement("canvas");
+      out.width = src.width; out.height = src.height;
+      out.getContext("2d").drawImage(src, 0, 0);
+      blob = await new Promise((res) => out.toBlob(res, "image/png"));
+      name = `geoblocks-build-${stamp}.png`;
+    }
+    if (!blob) throw new Error("empty image");
+    download(name, blob, "image/png");
+    toast(`Image exported as ${name}`);
+  } catch (e) {
+    toast("Couldn't export the image. Wait for the view to finish loading and try again.");
+  }
+});
+
+/* ---------- 3D model export: GLB (color, meters) and STL (printing) ---------- */
+function creationBounds() {
+  let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity, top = 0;
+  for (const b of state.bricks) {
+    x0 = Math.min(x0, b.x); x1 = Math.max(x1, b.x + b.w);
+    z0 = Math.min(z0, b.z); z1 = Math.max(z1, b.z + b.d); top = Math.max(top, (b.level + 1) * BH);
+  }
+  return { x0, x1, z0, z1, top, w: x1 - x0, d: z1 - z0 };
+}
+// Build a clean model of just the blocks, in stud units (1 = one stud, y up, -z = north).
+// For printing, blocks touch so they fuse into one solid.
+function buildModel(forPrint) {
+  const root = new THREE.Group();
+  root.name = "GeoBlocks";
+  const mats = {};
+  const mat = (ci) => mats[ci] || (mats[ci] = Object.assign(new THREE.MeshStandardMaterial({ color: COLORS[ci][1], roughness: 0.4, metalness: 0 }), { name: COLORS[ci][0] }));
+  const gap = forPrint ? 0 : 0.04;
+  const boxes = {}, box = (w, d) => boxes[w + "x" + d] || (boxes[w + "x" + d] = new THREE.BoxGeometry(w - gap, BH, d - gap));
+  const stud = new THREE.CylinderGeometry(0.3, 0.3, 0.18, forPrint ? 32 : 16);
+  for (const b of state.bricks) {
+    const body = new THREE.Mesh(box(b.w, b.d), mat(b.color));
+    body.name = `${COLORS[b.color][0]} ${b.w}x${b.d} block, level ${b.level}`;
+    body.position.set(b.x + b.w / 2, b.level * BH + BH / 2, b.z + b.d / 2);
+    root.add(body);
+    for (let i = 0; i < b.w; i++) for (let j = 0; j < b.d; j++) {
+      if (occ.has(key(b.x + i, b.z + j, b.level + 1))) continue;   // hidden under another block
+      const s = new THREE.Mesh(stud, mat(b.color));
+      s.name = "stud";
+      s.position.set(b.x + i + 0.5, (b.level + 1) * BH + 0.09, b.z + j + 0.5);
+      root.add(s);
+    }
+  }
+  return root;
+}
+function modelStamp() {
+  const d = new Date(), pad = (n) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}`;
+}
+function updateModelInfo() {
+  const fmt = document.querySelector('input[name="mfmt"]:checked').value;
+  $("stlSizeSet").disabled = fmt !== "stl";
+  const bb = creationBounds(), L = lengthMeters();
+  if (fmt === "glb") {
+    const g = geo();
+    $("modelInfo").textContent = `Model size ${fmtLen(bb.w * L)} × ${fmtLen(bb.d * L)} × ${fmtLen(bb.top * L)} tall. The model's origin point (the center of the baseplate) is your map origin (${g.lat0.toFixed(5)}, ${g.lon0.toFixed(5)}), rotation ${parseFloat($("heading").value) || 0}°. Use these to place it in ArcGIS.`;
+  } else {
+    const mm = document.querySelector('input[name="msize"]:checked').value === "toy" ? 8 : 150 / Math.max(bb.w, bb.d, bb.top + 0.18);
+    const f = (u) => `${Math.round(u * mm)} mm`;
+    $("modelInfo").textContent = `Print size about ${f(bb.w)} × ${f(bb.d)} × ${f(bb.top + 0.18)} tall. Blocks are joined into one solid so the print holds together.`;
+  }
+}
+$("modelBtn").addEventListener("click", () => {
+  if (!state.bricks.length) { toast("Place some blocks first."); return; }
+  updateModelInfo();
+  $("modelDlg").showModal();
+});
+document.querySelectorAll('input[name="mfmt"], input[name="msize"]').forEach((el) => el.addEventListener("change", updateModelInfo));
+$("modelCancel").addEventListener("click", () => $("modelDlg").close());
+$("modelForm").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const fmt = document.querySelector('input[name="mfmt"]:checked').value;
+  $("modelOk").disabled = true; $("modelOk").textContent = "Exporting…";
+  try {
+    const stamp = modelStamp();
+    if (fmt === "glb") {
+      const L = lengthMeters(), g = geo();
+      const model = buildModel(false);
+      model.scale.setScalar(L);   // stud units -> meters; origin = baseplate center = map origin
+      model.userData = {
+        app: "GeoBlocks", units: "meters", up: "+Y", north: "-Z",
+        originLatitude: g.lat0, originLongitude: g.lon0, rotationFromNorthDeg: parseFloat($("heading").value) || 0,
+        studLength: `${$("blockLen").value} ${$("unit").value === "ft" ? "ft" : "m"}`, blocks: state.bricks.length
+      };
+      const wrap = new THREE.Scene(); wrap.add(model);
+      const buf = await new Promise((res, rej) => new THREE.GLTFExporter().parse(wrap, res, rej, { binary: true }));
+      download(`geoblocks-model-${stamp}.glb`, new Blob([buf], { type: "model/gltf-binary" }), "model/gltf-binary");
+      toast(`3D model exported as geoblocks-model-${stamp}.glb`);
+    } else {
+      const bb = creationBounds();
+      const mm = document.querySelector('input[name="msize"]:checked').value === "toy" ? 8 : 150 / Math.max(bb.w, bb.d, bb.top + 0.18);
+      const model = buildModel(true);
+      // center on the print bed, sitting on z = 0, z up (slicers use z as up)
+      model.position.set(-(bb.x0 + bb.w / 2), 0, -(bb.z0 + bb.d / 2));
+      const holder = new THREE.Group(); holder.add(model);
+      holder.rotation.x = Math.PI / 2;      // y-up -> z-up; north (-z) becomes +y on the bed
+      holder.scale.setScalar(mm);
+      const wrap = new THREE.Scene(); wrap.add(holder);
+      wrap.updateMatrixWorld(true);
+      const data = new THREE.STLExporter().parse(wrap, { binary: true });
+      download(`geoblocks-print-${stamp}.stl`, new Blob([data], { type: "model/stl" }), "model/stl");
+      toast(`3D print file exported as geoblocks-print-${stamp}.stl`);
+    }
+    $("modelDlg").close();
+  } catch (e) {
+    console.error(e);
+    toast("Couldn't export the 3D model. Try again.");
+  } finally {
+    $("modelOk").disabled = false; $("modelOk").textContent = "Export";
+  }
+});
+function dataUrlToBlob(url) {
+  const [head, data] = url.split(",");
+  const mime = (head.match(/data:([^;]+)/) || [])[1] || "image/png";
+  const bin = atob(data), bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new Blob([bytes], { type: mime });
+}
+function persist() { try { localStorage.setItem("brick-atlas", JSON.stringify(serialize())); } catch (e) {} }
+let persistTimer;
+function changed() { updateStats(); clearTimeout(persistTimer); persistTimer = setTimeout(persist, 300); globeDirty = true; }
+
+
+/* ---------- ArcGIS Online: sign in with username/password, save a web map ---------- */
+const AGOL = "https://www.arcgis.com/sharing/rest";
+const agol = { token: null, expires: 0, user: null, portal: null };
+
+async function agolPost(url, params) {
+  const body = new URLSearchParams({ f: "json", ...params });
+  if (agol.token && !("token" in params)) body.set("token", agol.token);
+  const res = await fetch(url, { method: "POST", body });
+  const json = await res.json().catch(() => ({}));
+  if (json.error) {
+    const e = new Error(json.error.message || "ArcGIS Online returned an error.");
+    e.code = json.error.code; e.details = json.error.details; throw e;
+  }
+  return json;
+}
+async function agolSignIn(username, password) {
+  const web = /^https?:$/.test(location.protocol);
+  const tokenParams = web
+    ? { client: "referer", referer: location.origin }
+    : { client: "requestip" };
+  const t = await agolPost(`${AGOL}/generateToken`, { username, password, expiration: 120, ...tokenParams });
+  agol.token = t.token; agol.expires = t.expires;
+  const portal = await agolPost(`${AGOL}/portals/self`, {});
+  agol.portal = portal;
+  agol.user = portal.user || await agolPost(`${AGOL}/community/self`, {});
+}
+function agolSignOut() { Object.assign(agol, { token: null, expires: 0, user: null, portal: null }); agolUI(); }
+function agolSignedIn() { return !!agol.token && Date.now() < agol.expires - 60000; }
+function agolHost() {
+  const p = agol.portal;
+  return p && p.urlKey && p.customBaseUrl ? `https://${p.urlKey}.${p.customBaseUrl}` : "https://www.arcgis.com";
+}
+function agolUI() {
+  const on = agolSignedIn();
+  $("agolSignBtn").textContent = on ? "Sign out" : "Sign in";
+  if (on) {
+    const org = agol.portal && agol.portal.name ? ` · ${agol.portal.name}` : "";
+    $("agolStatus").innerHTML = `Signed in as <b></b>${org ? "<span></span>" : ""}`;
+    $("agolStatus").querySelector("b").textContent = agol.user.username;
+    $("exportSummary").textContent = `Image or ArcGIS Online · signed in as ${agol.user.username}`;
+    if (org) $("agolStatus").querySelector("span").textContent = org;
+  } else {
+    $("agolStatus").textContent = "Sign in to save your creation as a 3D web scene in ArcGIS Online.";
+    $("exportSummary").textContent = "Image or ArcGIS Online · not signed in";
+  }
+}
+function friendlyAgolError(e, during) {
+  const m = (e && e.message) || "";
+  if (e && e.code === "NO_PUBLISH") return m;
+  if (e instanceof TypeError) return "Couldn't reach arcgis.com. Check your internet connection. If you opened GeoBlocks inside another app's preview, open the file directly in your browser instead.";
+  if (during === "signin" && (e.code === 400 || /invalid username or password/i.test(m))) return "That username or password isn't right. Check them and try again.";
+  if (during === "signin" && e.code === 498) return "This account can't sign in with a username and password. Ask your ArcGIS administrator.";
+  return m || "Something went wrong talking to ArcGIS Online. Try again.";
+}
+
+// Sign-in dialog
+let afterSignIn = null;
+function openSignIn(next) {
+  afterSignIn = next || null;
+  $("signInError").hidden = true;
+  $("agolPass").value = "";
+  $("signInDlg").showModal();
+  ($("agolUser").value ? $("agolPass") : $("agolUser")).focus();
+}
+$("agolSignBtn").addEventListener("click", () => agolSignedIn() ? (agolSignOut(), toast("Signed out of ArcGIS Online.")) : openSignIn());
+$("signInCancel").addEventListener("click", () => $("signInDlg").close());
+$("signInForm").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const u = $("agolUser").value.trim(), pw = $("agolPass").value;
+  if (!u || !pw) { $("signInError").textContent = "Enter your username and password."; $("signInError").hidden = false; return; }
+  $("signInOk").disabled = true; $("signInOk").textContent = "Signing in…"; $("signInError").hidden = true;
+  try {
+    await agolSignIn(u, pw);
+    $("agolPass").value = "";
+    $("signInDlg").close();
+    agolUI();
+    toast(`Signed in as ${agol.user.username}.`);
+    if (afterSignIn) { const f = afterSignIn; afterSignIn = null; f(); }
+  } catch (e) {
+    $("signInError").textContent = friendlyAgolError(e, "signin"); $("signInError").hidden = false;
+  } finally {
+    $("signInOk").disabled = false; $("signInOk").textContent = "Sign in";
+  }
+});
+
+// Save dialog
+$("agolSaveBtn").addEventListener("click", () => {
+  if (!state.bricks.length) { toast("Place some blocks first."); return; }
+  if (!agolSignedIn()) { openSignIn(openSaveDialog); return; }
+  openSaveDialog();
+});
+function openSaveDialog() {
+  const d = new Date();
+  $("mapTitle").value = `GeoBlocks creation ${d.toLocaleDateString()} ${d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+  $("mapSummary").value = "";
+  $("agolSaveFields").hidden = false; $("agolSaveResult").hidden = true; $("agolSaveError").hidden = true;
+  $("agolSaveOk").hidden = false; $("agolSaveCancel").textContent = "Cancel";
+  const hasOrg = !!(agol.portal && agol.portal.id && agol.user.orgId);
+  const canPublic = !agol.portal || agol.portal.canSharePublic !== false;
+  $("shareOrgText").textContent = hasOrg && agol.portal.name ? `My organization (${agol.portal.name})` : "My organization";
+  const orgInput = $("shareOrgLabel").querySelector("input"), pubInput = $("sharePublicLabel").querySelector("input");
+  orgInput.disabled = !hasOrg; $("shareOrgLabel").classList.toggle("disabled", !hasOrg);
+  pubInput.disabled = !canPublic; $("sharePublicLabel").classList.toggle("disabled", !canPublic);
+  document.querySelector('input[name="share"][value="private"]').checked = true;
+  $("agolSaveDlg").showModal();
+  $("mapTitle").select();
+}
+$("agolSaveCancel").addEventListener("click", () => $("agolSaveDlg").close());
+$("agolCopy").addEventListener("click", async () => {
+  const v = $("agolUrl").value;
+  try { await navigator.clipboard.writeText(v); $("agolCopy").textContent = "Copied"; }
+  catch (e) { $("agolUrl").select(); $("agolCopy").textContent = "Press Ctrl+C"; }
+  setTimeout(() => $("agolCopy").textContent = "Copy", 1800);
+});
+$("agolSaveForm").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const title = $("mapTitle").value.trim();
+  if (!title) { $("agolSaveError").textContent = "Give your web scene a name."; $("agolSaveError").hidden = false; return; }
+  if (!agolSignedIn()) { $("agolSaveDlg").close(); openSignIn(openSaveDialog); return; }
+  const share = document.querySelector('input[name="share"]:checked').value;
+  $("agolSaveOk").disabled = true; $("agolSaveOk").textContent = "Saving…"; $("agolSaveError").hidden = true;
+  try {
+    const progress = (msg) => { $("agolSaveOk").textContent = msg; };
+    const { id, layerId, shareFailed } = await saveWebScene(title, $("mapSummary").value.trim(), share, progress);
+    const host = agolHost();
+    const sceneUrl = `${host}/home/webscene/viewer.html?webscene=${id}`;
+    $("agolUrl").value = sceneUrl;
+    $("agolOpenMap").href = sceneUrl;
+    $("agolOpenItem").href = `${host}/home/item.html?id=${id}`;
+    $("agolOpenLayer").href = `${host}/home/item.html?id=${layerId}`;
+    $("agolSaveMsg").textContent = shareFailed
+      ? `Saved "${title}", but it couldn't be shared. Only you can see it until you change sharing on the scene and layer item pages.`
+      : `Saved "${title}" as a 3D web scene (${share === "public" ? "shared with everyone" : share === "org" ? "shared with your organization" : "only you can see it"}).`;
+    $("agolSaveFields").hidden = true; $("agolSaveResult").hidden = false;
+    $("agolSaveOk").hidden = true; $("agolSaveCancel").textContent = "Done";
+  } catch (e) {
+    $("agolSaveError").textContent = friendlyAgolError(e, "save"); $("agolSaveError").hidden = false;
+  } finally {
+    $("agolSaveOk").disabled = false; $("agolSaveOk").textContent = "Save web scene";
+  }
+});
+
+// ---- 3D save: hosted z-enabled feature layer + web scene that extrudes it
+function toMercator([lon, lat]) {
+  const R = 6378137;
+  const x = R * lon * Math.PI / 180;
+  const y = R * Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI / 180) / 2));
+  return [+x.toFixed(3), +y.toFixed(3)];
+}
+function hexToRgba(hex, a = 255) {
+  const n = parseInt(hex.slice(1), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255, a];
+}
+const WM = { wkid: 102100, latestWkid: 3857 };
+const BLOCK_FIELDS = [
+  { name: "OBJECTID", type: "esriFieldTypeOID", alias: "OBJECTID", editable: false, nullable: false },
+  { name: "color", type: "esriFieldTypeString", alias: "Color", length: 40 },
+  { name: "hex", type: "esriFieldTypeString", alias: "Color code", length: 10 },
+  { name: "size", type: "esriFieldTypeString", alias: "Block size", length: 10 },
+  { name: "level", type: "esriFieldTypeInteger", alias: "Level" },
+  { name: "base_m", type: "esriFieldTypeDouble", alias: "Base height (m)" },
+  { name: "height_m", type: "esriFieldTypeDouble", alias: "Block height (m)" }
+];
+const STUD_FIELDS = [
+  { name: "OBJECTID", type: "esriFieldTypeOID", alias: "OBJECTID", editable: false, nullable: false },
+  { name: "color", type: "esriFieldTypeString", alias: "Color", length: 40 },
+  { name: "level", type: "esriFieldTypeInteger", alias: "Level" },
+  { name: "top_m", type: "esriFieldTypeDouble", alias: "Height above ground (m)" }
+];
+
+// Blocks become z-enabled polygons (z = height of the block's base above the ground);
+// studs become z-enabled points on each block's top.
+function buildFeatures() {
+  const g = geo();
+  const ext = { xmin: Infinity, ymin: Infinity, xmax: -Infinity, ymax: -Infinity, zmin: 0, zmax: 0 };
+  const grow = ([x, y], z) => {
+    ext.xmin = Math.min(ext.xmin, x); ext.xmax = Math.max(ext.xmax, x);
+    ext.ymin = Math.min(ext.ymin, y); ext.ymax = Math.max(ext.ymax, y); ext.zmax = Math.max(ext.zmax, z);
+  };
+  let minLon = Infinity, minLat = Infinity, maxLon = -Infinity, maxLat = -Infinity;
+  const blocks = [], studs = [];
+  for (const b of state.bricks) {
+    const z = +(b.level * g.H).toFixed(3);
+    const ring = g.ring(b).map((ll) => {
+      minLon = Math.min(minLon, ll[0]); maxLon = Math.max(maxLon, ll[0]);
+      minLat = Math.min(minLat, ll[1]); maxLat = Math.max(maxLat, ll[1]);
+      const m = toMercator(ll); grow(m, z + g.H); return [m[0], m[1], z];
+    });
+    blocks.push({
+      geometry: { rings: [ring], hasZ: true, spatialReference: WM },
+      attributes: { color: COLORS[b.color][0], hex: COLORS[b.color][1], size: `${b.w}x${b.d}`, level: b.level, base_m: z, height_m: +g.H.toFixed(3) }
+    });
+    const top = +((b.level + 1) * g.H).toFixed(3);
+    for (let i = 0; i < b.w; i++) for (let j = 0; j < b.d; j++) {
+      const m = toMercator(g.toLL(b.x + i + 0.5, b.z + j + 0.5));
+      studs.push({ geometry: { x: m[0], y: m[1], z: top, spatialReference: WM }, attributes: { color: COLORS[b.color][0], level: b.level, top_m: top } });
+    }
+  }
+  return { g, blocks, studs, ext: { ...ext, spatialReference: WM }, ll: { minLon, minLat, maxLon, maxLat } };
+}
+
+function blockRenderer(used, H, edges) {
+  return {
+    type: "uniqueValue", field1: "color",
+    uniqueValueInfos: used.map((ci) => ({
+      value: COLORS[ci][0], label: COLORS[ci][0],
+      symbol: edges
+        ? { type: "PolygonSymbol3D", symbolLayers: [{ type: "Extrude", size: +H.toFixed(3), material: { color: hexToRgba(COLORS[ci][1]) }, edges: { type: "solid", color: [0, 0, 0, 90], size: 1 } }] }
+        : { type: "esriSFS", style: "esriSFSSolid", color: hexToRgba(COLORS[ci][1]), outline: { type: "esriSLS", style: "esriSLSSolid", color: [0, 0, 0, 90], width: 0.75 } }
+    }))
+  };
+}
+function studRenderer(used, L, threeD) {
+  return {
+    type: "uniqueValue", field1: "color",
+    uniqueValueInfos: used.map((ci) => ({
+      value: COLORS[ci][0], label: COLORS[ci][0],
+      symbol: threeD
+        ? { type: "PointSymbol3D", symbolLayers: [{ type: "Object", resource: { primitive: "cylinder" }, width: +(0.6 * L).toFixed(3), depth: +(0.6 * L).toFixed(3), height: +(0.18 * L).toFixed(3), anchor: "bottom", material: { color: hexToRgba(COLORS[ci][1]) } }] }
+        : { type: "esriSMS", style: "esriSMSCircle", size: 3, color: hexToRgba(COLORS[ci][1]), outline: { type: "esriSLS", style: "esriSLSSolid", color: [0, 0, 0, 60], width: 0.5 } }
+    }))
+  };
+}
+
+async function groundElevation(lon, lat) {
+  if (view && esri) {
+    try { const r = await view.map.ground.queryElevation(new esri.Point({ longitude: lon, latitude: lat })); return r.geometry.z || 0; } catch (e) {}
+  }
+  try {
+    const q = new URLSearchParams({ f: "json", geometryType: "esriGeometryPoint", returnGeometry: "false", returnCatalogItems: "false",
+      geometry: JSON.stringify({ x: lon, y: lat, spatialReference: { wkid: 4326 } }) });
+    const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 6000);
+    const r = await fetch(`https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer/identify?${q}`, { signal: ctrl.signal });
+    clearTimeout(t);
+    const j = await r.json(); const v = parseFloat(j.value);
+    if (isFinite(v)) return v;
+  } catch (e) {}
+  return null;
+}
+
+async function buildWebScene(svc, f, used) {
+  const { g } = f;
+  const [cx, cz] = centerStuds();
+  const [clon, clat] = g.toLL(cx, cz);
+  const H = Math.max(...state.bricks.map((b) => (b.level + 1) * g.H));
+  const span = Math.max(40, extentStuds() * g.L);
+  const elev = await groundElevation(clon, clat);
+  const heading = ((parseFloat($("heading").value) || 0) + 25 + 360) % 360, tilt = 62;
+  const dist = span * 2.6, horiz = dist * Math.sin(tilt * Math.PI / 180);
+  const hr = heading * Math.PI / 180;
+  const camLat = clat - (horiz * Math.cos(hr)) / 111320;
+  const camLon = clon - (horiz * Math.sin(hr)) / (111320 * Math.cos(clat * Math.PI / 180));
+  const camZ = (elev === null ? 3000 : elev + H / 3) + dist * Math.cos(tilt * Math.PI / 180);
+  const pop = (title, fields) => ({ title, fieldInfos: fields.map((x) => ({ fieldName: x.name, label: x.alias, visible: x.name !== "OBJECTID" })), showAttachments: false });
+  const d = new Date(); d.setHours(11, 0, 0, 0);   // late-morning sun so the blocks cast shadows
+  return {
+    operationalLayers: [
+      {
+        id: "geoblocks-blocks", title: "GeoBlocks", layerType: "ArcGISFeatureLayer", url: `${svc.url}/0`, itemId: svc.itemId,
+        visibility: true, opacity: 1,
+        layerDefinition: {
+          drawingInfo: { renderer: blockRenderer(used, g.H, true) },
+          elevationInfo: { mode: "relativeToGround", featureExpressionInfo: { expression: "$feature.base_m" }, unit: "meter" }
+        },
+        popupInfo: pop("{color} block ({size}), level {level}", BLOCK_FIELDS)
+      },
+      {
+        id: "geoblocks-studs", title: "GeoBlocks studs", layerType: "ArcGISFeatureLayer", url: `${svc.url}/1`, itemId: svc.itemId,
+        visibility: true, opacity: 1, listMode: "show",
+        layerDefinition: {
+          drawingInfo: { renderer: studRenderer(used, g.L, true) },
+          elevationInfo: { mode: "relativeToGround", featureExpressionInfo: { expression: "$feature.top_m" }, unit: "meter" }
+        },
+        disablePopup: true
+      }
+    ],
+    baseMap: {
+      id: "geoblocks-basemap", title: "Topographic",
+      baseMapLayers: [{ id: "World_Topo_Map", title: "World Topographic Map", layerType: "ArcGISTiledMapServiceLayer",
+        url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer", visibility: true, opacity: 1 }]
+    },
+    ground: {
+      layers: [{ id: "globalElevation", title: "Terrain3D", layerType: "ArcGISTiledElevationServiceLayer", listMode: "hide", visibility: true,
+        url: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer" }],
+      transparency: 0, navigationConstraint: { type: "stayAbove" }
+    },
+    heightModelInfo: { heightModel: "gravity_related_height", vertCRS: "EGM96_Geoid", heightUnit: "meter" },
+    initialState: {
+      environment: { lighting: { type: "sun", datetime: d.getTime(), displayUTCOffset: -d.getTimezoneOffset() / 60, directShadowsEnabled: true }, atmosphereEnabled: true, starsEnabled: true },
+      viewpoint: { camera: { position: { x: camLon, y: camLat, z: camZ, spatialReference: { wkid: 4326 } }, heading, tilt } }
+    },
+    spatialReference: WM,
+    viewingMode: "global",
+    version: "1.33", authoringApp: "GeoBlocks", authoringAppVersion: "1.0"
+  };
+}
+
+async function buildThumbnail() {
+  try {
+    ghost.visible = false; stampGhost.visible = false;
+    controls.update(); renderer.render(scene, camera);
+    const src = renderer.domElement, out = document.createElement("canvas");
+    out.width = 600; out.height = 400;
+    const sw = src.width, sh = src.height, scale = Math.max(600 / sw, 400 / sh);
+    const w = sw * scale, h = sh * scale;
+    out.getContext("2d").drawImage(src, (600 - w) / 2, (400 - h) / 2, w, h);
+    return await new Promise((res) => out.toBlob(res, "image/png"));
+  } catch (e) { return null; }
+}
+async function agolForm(url, fields, thumb) {
+  const form = new FormData();
+  Object.entries({ f: "json", token: agol.token, ...fields }).forEach(([k, v]) => form.append(k, v));
+  if (thumb) form.append("thumbnail", thumb, "thumbnail.png");
+  const res = await fetch(url, { method: "POST", body: form });
+  const json = await res.json().catch(() => ({}));
+  if (json.error) { const e = new Error(json.error.message || "ArcGIS Online returned an error."); e.code = json.error.code; throw e; }
+  return json;
+}
+function canPublish() {
+  const p = agol.user && agol.user.privileges;
+  return !Array.isArray(p) || p.includes("portal:publisher:publishFeatures");
+}
+function noPublishError() {
+  const e = new Error("Your ArcGIS account isn't allowed to create hosted layers, which a 3D web scene needs. Ask your ArcGIS administrator for a Creator account with publishing rights, or use Save file and Export image instead.");
+  e.code = "NO_PUBLISH"; return e;
+}
+
+async function saveWebScene(title, summary, share, progress) {
+  if (!canPublish()) throw noPublishError();
+  const user = encodeURIComponent(agol.user.username);
+  const f = buildFeatures();
+  const { g } = f;
+  const used = [...new Set(state.bricks.map((b) => b.color))];
+  const desc = `Built with GeoBlocks. Origin ${g.lat0.toFixed(6)}, ${g.lon0.toFixed(6)}; rotation ${parseFloat($("heading").value) || 0}°; one stud = ${$("blockLen").value} ${$("unit").value === "ft" ? "ft" : "m"}; block height = ${g.H.toFixed(2)} m; ${state.bricks.length} blocks.`;
+  const extent = `${(f.ll.minLon - 0.002).toFixed(6)},${(f.ll.minLat - 0.002).toFixed(6)},${(f.ll.maxLon + 0.002).toFixed(6)},${(f.ll.maxLat + 0.002).toFixed(6)}`;
+  const tags = "GeoBlocks, 3D, blocks";
+  let layerItemId = null;
+  try {
+    // 1. Empty hosted feature service
+    progress("Creating 3D layer…");
+    const svcName = ("GeoBlocks_" + title).replace(/[^A-Za-z0-9]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 50) + "_" + Date.now().toString(36);
+    let created;
+    try {
+      created = await agolPost(`${AGOL}/content/users/${user}/createService`, {
+        outputType: "featureService",
+        createParameters: JSON.stringify({
+          name: svcName, serviceDescription: desc, hasStaticData: false, maxRecordCount: 2000, supportedQueryFormats: "JSON",
+          capabilities: "Create,Delete,Query,Update,Editing", allowGeometryUpdates: true, units: "esriMeters",
+          spatialReference: WM, initialExtent: f.ext,
+          xssPreventionInfo: { xssPreventionEnabled: true, xssPreventionRule: "InputOnly", xssInputRule: "rejectInvalid" }
+        })
+      });
+    } catch (e) {
+      if (e.code === 403 || /permission|privilege|not authorized/i.test(e.message)) throw noPublishError();
+      throw e;
+    }
+    if (!created.success && !created.serviceurl) throw new Error("ArcGIS Online couldn't create the 3D layer.");
+    const svcUrl = created.serviceurl || created.encodedServiceURL;
+    layerItemId = created.itemId || created.serviceItemId;
+    const adminUrl = svcUrl.replace("/rest/services/", "/rest/admin/services/");
+
+    // 2. Two z-enabled layers: blocks (polygons) and studs (points)
+    const common = { type: "Feature Layer", hasZ: true, hasM: false, enableZDefaults: true, zDefault: 0, objectIdField: "OBJECTID",
+      spatialReference: WM, extent: f.ext, capabilities: "Create,Delete,Query,Update,Editing", allowGeometryUpdates: true,
+      hasAttachments: false, htmlPopupType: "esriServerHTMLPopupTypeNone", templates: [], types: [] };
+    await agolPost(`${adminUrl}/addToDefinition`, {
+      addToDefinition: JSON.stringify({ layers: [
+        { ...common, id: 0, name: "GeoBlocks", displayField: "color", geometryType: "esriGeometryPolygon", fields: BLOCK_FIELDS,
+          drawingInfo: { renderer: blockRenderer(used, g.H, false) } },
+        { ...common, id: 1, name: "GeoBlocks studs", displayField: "color", geometryType: "esriGeometryPoint", fields: STUD_FIELDS,
+          drawingInfo: { renderer: studRenderer(used, g.L, false) } }
+      ] })
+    });
+
+    // 3. Load the blocks and studs
+    const load = async (idx, feats, label) => {
+      for (let i = 0; i < feats.length; i += 500) {
+        progress(`Adding ${label} ${Math.min(i + 500, feats.length)}/${feats.length}…`);
+        const r = await agolPost(`${svcUrl}/${idx}/applyEdits`, { adds: JSON.stringify(feats.slice(i, i + 500)), rollbackOnFailure: "true" });
+        const bad = (r.addResults || []).find((x) => !x.success);
+        if (bad) throw new Error(`ArcGIS Online rejected some ${label}: ${(bad.error && bad.error.description) || "unknown reason"}.`);
+      }
+    };
+    await load(0, f.blocks, "blocks");
+    await load(1, f.studs, "studs");
+
+    // 4. Lock the layer to read-only now that it's loaded (best effort)
+    progress("Finishing the layer…");
+    try {
+      await agolPost(`${adminUrl}/updateDefinition`, { updateDefinition: JSON.stringify({ capabilities: "Query" }) });
+    } catch (e) { console.warn("Couldn't make the GeoBlocks layer read-only:", e); }
+    const thumb = await buildThumbnail();
+    try {
+      await agolForm(`${AGOL}/content/users/${user}/items/${layerItemId}/update`, {
+        title: `${title} (GeoBlocks 3D layer)`, tags, snippet: `3D blocks for the "${title}" web scene.`, description: desc
+      }, thumb);
+    } catch (e) { console.warn("Couldn't update the layer item:", e); }
+
+    // 5. Web scene that extrudes the blocks and draws the studs
+    progress("Saving web scene…");
+    const sceneJson = await buildWebScene({ url: svcUrl, itemId: layerItemId }, f, used);
+    const added = await agolForm(`${AGOL}/content/users/${user}/addItem`, {
+      title, type: "Web Scene",
+      typeKeywords: "ViewingMode-Global,Web Scene,GeoBlocks",
+      tags, snippet: summary || `A GeoBlocks creation of ${state.bricks.length} blocks at ${g.lat0.toFixed(5)}, ${g.lon0.toFixed(5)}.`,
+      description: desc, extent, text: JSON.stringify(sceneJson)
+    }, thumb);
+    if (!added.id) throw new Error("ArcGIS Online didn't save the web scene.");
+
+    // 6. Share both items
+    let shareFailed = false;
+    if (share !== "private") {
+      progress("Sharing…");
+      try {
+        const r = await agolPost(`${AGOL}/content/users/${user}/shareItems`, {
+          items: `${added.id},${layerItemId}`, everyone: String(share === "public"), org: "true", groups: ""
+        });
+        shareFailed = !!(r.results && r.results.find((x) => x.success === false));
+      } catch (e) { shareFailed = true; }
+    }
+    return { id: added.id, layerId: layerItemId, shareFailed };
+  } catch (e) {
+    // Don't leave a half-built layer behind
+    if (layerItemId) { try { await agolPost(`${AGOL}/content/users/${user}/items/${layerItemId}/delete`, {}); } catch (x) {} }
+    throw e;
+  }
+}
+agolUI();
+
+/* ---------- Geography ---------- */
+function geo() {
+  const lat0 = Math.max(-89.9, Math.min(89.9, parseFloat($("lat").value) || 0));
+  const lon0 = parseFloat($("lon").value) || 0;
+  const r = ((parseFloat($("heading").value) || 0) * Math.PI) / 180;
+  const L = lengthMeters();
+  const mLat = 111320, mLon = 111320 * Math.cos((lat0 * Math.PI) / 180);
+  // builder x → east, builder z → south. Rotate clockwise by heading.
+  const toLL = (x, z) => {
+    const e = x * L, n = -z * L;
+    const E = e * Math.cos(r) + n * Math.sin(r);
+    const N = -e * Math.sin(r) + n * Math.cos(r);
+    return [lon0 + E / mLon, lat0 + N / mLat];
+  };
+  const ring = (b) => {
+    const pts = [[b.x, b.z], [b.x + b.w, b.z], [b.x + b.w, b.z + b.d], [b.x, b.z + b.d], [b.x, b.z]];
+    return pts.map(([x, z]) => toLL(x, z));
+  };
+  return { lat0, lon0, L, H: BH * L, toLL, ring };
+}
+
+/* ---------- ArcGIS globe ---------- */
+const ARCGIS = "https://js.arcgis.com/4.30/";
+let esri = null, view = null, brickLayer = null, savedBasemap = null, globeDirty = true, arcgisLoading = null;
+
+function loadArcGIS() {
+  if (arcgisLoading) return arcgisLoading;
+  arcgisLoading = new Promise((resolve, reject) => {
+    const css = document.createElement("link");
+    css.rel = "stylesheet"; css.href = ARCGIS + "esri/themes/light/main.css";
+    document.head.appendChild(css);
+    const s = document.createElement("script");
+    s.src = ARCGIS; s.async = true;
+    s.onerror = () => reject(new Error("load"));
+    s.onload = () => window.require([
+      "esri/Map", "esri/views/SceneView", "esri/layers/GraphicsLayer", "esri/Graphic",
+      "esri/Basemap", "esri/widgets/BasemapGallery", "esri/widgets/BasemapGallery/support/LocalBasemapsSource",
+      "esri/widgets/Expand", "esri/geometry/Point"
+    ], (Map, SceneView, GraphicsLayer, Graphic, Basemap, BasemapGallery, LocalBasemapsSource, Expand, Point) =>
+      resolve({ Map, SceneView, GraphicsLayer, Graphic, Basemap, BasemapGallery, LocalBasemapsSource, Expand, Point }), reject);
+    document.head.appendChild(s);
+  });
+  return arcgisLoading;
+}
+
+async function initGlobe() {
+  esri = await loadArcGIS();
+  const { Map, SceneView, GraphicsLayer, Basemap, BasemapGallery, LocalBasemapsSource, Expand } = esri;
+  savedBasemap = Basemap.fromId("topo-3d");
+  brickLayer = new GraphicsLayer({ title: "Brick creation", elevationInfo: { mode: "absolute-height" } });
+  const map = new Map({ basemap: savedBasemap, ground: "world-elevation", layers: [brickLayer] });
+  const g = geo();
+  view = new SceneView({
+    container: "globe", map,
+    camera: { position: { longitude: g.lon0, latitude: g.lat0 - 0.004, z: 400 }, tilt: 60 },
+    qualityProfile: "high",
+    environment: { lighting: { directShadowsEnabled: true } }
+  });
+  const ids = ["topo-3d", "streets-3d", "navigation-3d", "gray-3d", "osm-3d", "dark-gray-3d", "streets-dark-3d", "navigation-dark-3d", "satellite", "hybrid"];
+  const gallery = new BasemapGallery({
+    view,
+    source: new LocalBasemapsSource({ basemaps: ids.map((id) => Basemap.fromId(id)).filter(Boolean) })
+  });
+  view.ui.add(new Expand({ view, content: gallery, expandTooltip: "Basemap gallery", group: "top-right" }), "top-right");
+  // Basemap on/off button, on the map itself
+  const bmBtn = document.createElement("button");
+  bmBtn.type = "button"; bmBtn.className = "esri-widget--button basemap-toggle";
+  bmBtn.setAttribute("aria-pressed", "true");
+  bmBtn.title = "Turn the basemap off";
+  bmBtn.innerHTML = '<span class="esri-icon-layers" aria-hidden="true"></span><span class="bm-label">Basemap on</span>';
+  bmBtn.addEventListener("click", () => {
+    const on = bmBtn.getAttribute("aria-pressed") !== "true";
+    bmBtn.setAttribute("aria-pressed", String(on));
+    bmBtn.querySelector(".bm-label").textContent = on ? "Basemap on" : "Basemap off";
+    bmBtn.title = on ? "Turn the basemap off" : "Turn the basemap on";
+    view.map.basemap = on ? savedBasemap : null;
+  });
+  view.ui.add(bmBtn, "top-right");
+  // Keep the gallery choice even while the basemap is switched off.
+  view.watch("map.basemap", (bm) => { if (bm) savedBasemap = bm; });
+  await view.when();
+}
+
+async function renderGlobe(fly) {
+  if (!view) return;
+  const { Graphic, Point } = esri;
+  const g = geo();
+  let base = 0;
+  try {
+    const r = await view.map.ground.queryElevation(new Point({ longitude: g.lon0, latitude: g.lat0 }));
+    base = r.geometry.z || 0;
+  } catch (e) { base = 0; }
+  const graphics = [];
+  for (const b of state.bricks) {
+    const z = base + b.level * g.H;
+    const ring = g.ring(b).map(([lo, la]) => [lo, la, z]);
+    graphics.push(new Graphic({
+      geometry: { type: "polygon", rings: [ring], hasZ: true, spatialReference: { wkid: 4326 } },
+      symbol: {
+        type: "polygon-3d",
+        symbolLayers: [{
+          type: "extrude", size: g.H,
+          material: { color: COLORS[b.color][1] },
+          edges: { type: "solid", color: [0, 0, 0, 0.35], size: 1 }
+        }]
+      },
+      attributes: { color: COLORS[b.color][0], size: `${b.w}x${b.d}`, level: b.level }
+    }));
+    // studs
+    for (let i = 0; i < b.w; i++) for (let j = 0; j < b.d; j++) {
+      const [lo, la] = g.toLL(b.x + i + 0.5, b.z + j + 0.5);
+      graphics.push(new Graphic({
+        geometry: { type: "point", longitude: lo, latitude: la, z: z + g.H, spatialReference: { wkid: 4326 } },
+        symbol: {
+          type: "point-3d",
+          symbolLayers: [{
+            type: "object", resource: { primitive: "cylinder" },
+            width: 0.6 * g.L, depth: 0.6 * g.L, height: 0.18 * g.L, anchor: "bottom",
+            material: { color: COLORS[b.color][1] }
+          }]
+        }
+      }));
+    }
+  }
+  brickLayer.removeAll();
+  brickLayer.addMany(graphics);
+  globeDirty = false;
+  if (fly) {
+    const heading = (parseFloat($("heading").value) || 0) + 25;
+    const bodies = graphics.filter((gr) => gr.geometry.type === "polygon");
+    const target = bodies.length ? bodies : new Point({ longitude: g.lon0, latitude: g.lat0, z: base });
+    const opts = bodies.length ? { target, tilt: 62, heading } : { target, tilt: 62, heading, zoom: 18 };
+    view.goTo(opts, { duration: 1800 }).catch(() => {});
+  }
+}
+function extentStuds() {
+  let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity, top = 0;
+  for (const b of state.bricks) {
+    x0 = Math.min(x0, b.x); x1 = Math.max(x1, b.x + b.w);
+    z0 = Math.min(z0, b.z); z1 = Math.max(z1, b.z + b.d); top = Math.max(top, (b.level + 1) * BH);
+  }
+  return Math.max(x1 - x0, z1 - z0, top);
+}
+function centerStuds() {
+  if (!state.bricks.length) return [0, 0];
+  let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity;
+  for (const b of state.bricks) {
+    x0 = Math.min(x0, b.x); x1 = Math.max(x1, b.x + b.w);
+    z0 = Math.min(z0, b.z); z1 = Math.max(z1, b.z + b.d);
+  }
+  return [(x0 + x1) / 2, (z0 + z1) / 2];
+}
+
+async function setView(v) {
+  state.view = v;
+  $("tabBuild").setAttribute("aria-pressed", String(v === "build"));
+  $("tabMap").setAttribute("aria-pressed", String(v === "map"));
+  $("builder").hidden = v !== "build";
+  $("hud").hidden = v !== "build";
+  $("globe").hidden = v !== "map";
+  if (v === "build") { resize(); return; }
+  if (!view) {
+    $("globeLoading").hidden = false;
+    try { await initGlobe(); }
+    catch (e) {
+      $("globeLoading").hidden = true;
+      toast("The ArcGIS map couldn't load. Check your internet connection and try again.");
+      arcgisLoading = null;
+      setView("build");
+      return;
+    }
+    $("globeLoading").hidden = true;
+    await renderGlobe(true);
+  } else {
+    await renderGlobe(globeDirty);
+  }
+}
+$("tabBuild").addEventListener("click", () => setView("build"));
+$("tabMap").addEventListener("click", () => setView("map"));
+
+/* ---------- Starting model: a small schoolhouse with a tree ---------- */
+function sample() {
+  const R = 0, Y = 2, W = 5, B = 1, G = 3, BR = 10;
+  const add = (x, z, w, d, level, color) => { const b = { x, z, w, d, level, color }; if (canPlace(b)) addBrick(b, false); };
+  // gray foundation
+  for (let x = -6; x < 6; x += 4) for (let z = -4; z < 4; z += 2) add(x, z, 4, 2, 0, 7);
+  // walls: running bond with a door on the south side
+  for (let lv = 1; lv <= 4; lv++) {
+    const off = lv % 2 ? 0 : 1;
+    for (let x = -6 + off; x < 6; x += 2) {
+      const w = Math.min(2, 6 - x);
+      if (!(lv <= 3 && x >= -1 && x < 1)) add(x, 3, w, 1, lv, R);
+      add(x, -4, w, 1, lv, R);
+    }
+    if (off) { add(-6, 3, 1, 1, lv, R); add(-6, -4, 1, 1, lv, R); }
+    for (let z = -3 + (off ? 1 : 0); z < 3; z += 2) {
+      const d = Math.min(2, 3 - z);
+      const win = lv >= 2 && lv <= 3 && z >= -1 && z < 1;
+      add(-6, z, 1, d, lv, win ? Y : R);
+      add(5, z, 1, d, lv, win ? Y : R);
+    }
+    if (off) { add(-6, -3, 1, 1, lv, R); add(5, -3, 1, 1, lv, R); }
+  }
+  add(-1, 3, 2, 1, 4, W);
+  // roof: two blue layers stepping in
+  for (let x = -6; x < 6; x += 4) for (let z = -4; z < 4; z += 2) add(x, z, 4, 2, 5, B);
+  for (let x = -5; x < 5; x += 2) for (let z = -3; z < 3; z += 3) add(x, z, 2, 3, 6, B);
+  add(-1, -1, 2, 2, 7, W);
+  // tree
+  add(9, 6, 1, 1, 0, BR); add(9, 6, 1, 1, 1, BR); add(9, 6, 1, 1, 2, BR);
+  add(8, 5, 3, 1, 3, G); add(8, 6, 1, 2, 3, G); add(10, 6, 1, 2, 3, G); add(9, 7, 1, 1, 3, G);
+  add(8, 5, 2, 2, 4, G); add(10, 5, 1, 2, 4, G); add(8, 7, 3, 1, 4, G);
+  add(9, 6, 1, 1, 5, G);
+}
+
+/* ---------- Boot ---------- */
+let restored = false;
+try {
+  const saved = JSON.parse(localStorage.getItem("brick-atlas") || "null");
+  if (saved && saved.bricks && saved.bricks.length) { load(saved); restored = true; }
+} catch (e) {}
+if (!restored) sample();
+state.undo = [];
+syncUI();
+matchPreset();
+resize();
+})();
+</script>
+</body>
+</html>

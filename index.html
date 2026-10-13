@@ -174,7 +174,10 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
 .sample p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 .sample .specs { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 0; padding: 0; list-style: none; }
 .sample .specs li { font: 500 0.76rem/1 var(--font-mono); border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; color: var(--ink); }
-.sample .dl { margin-top: auto; padding-top: 6px; }
+.sample .dl { margin-top: auto; padding-top: 6px; display: grid; gap: 8px; }
+.sample .dl a.open { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.sample .dl a.open small { color: var(--accent-ink); font-size: 1rem; }
+.sample .dl a.open:hover { border-color: var(--ink); }
 .sample .dl a { display: flex; align-items: center; justify-content: space-between; gap: 10px; text-decoration: none; font-weight: 700; padding: 11px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); }
 .sample .dl a:hover { border-color: var(--ink); }
 .sample .dl small { font: 500 0.78rem var(--font-mono); color: var(--muted); }
@@ -336,7 +339,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
     <div class="wrap">
       <p class="eyebrow">Sample creations</p>
       <h2>Six builds to open, explore, and remix</h2>
-      <p class="lead">Each sample is a ready-made GeoBlocks file placed at its real location and scale. Open one to show students what's possible, then switch to the 3D Map to see it on real terrain. The samples range from half a meter to ten meters per stud.</p>
+      <p class="lead">Each sample is a ready-made GeoBlocks file placed at its real location and scale. Open one straight in the app to show students what's possible, or download it to share. The samples range from half a meter to ten meters per stud.</p>
       <div class="samples">
         <article class="sample">
           <figure class="pic"><img src="samples/Esri_Building_Q_preview.jpg" alt="Block model of a three-story office building with rooftop solar panels, palm trees, a parking lot, and an orange grove." loading="lazy"></figure>
@@ -345,7 +348,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Esri Building Q</h3>
             <p>Esri's three-story executive headquarters with glass and redwood bands, an atrium with bridges, rooftop solar, palms, and an orange grove.</p>
             <ul class="specs"><li>6 ft per stud</li><li>1,072 blocks</li><li>3 stories</li></ul>
-            <div class="dl"><a href="samples/Esri_Building_Q_Redlands.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+            <div class="dl"><a class="open" href="app/geoblocks.html?file=../samples/Esri_Building_Q_Redlands.geoblocks">Open in GeoBlocks <small>→</small></a><a href="samples/Esri_Building_Q_Redlands.geoblocks" download>Download file <small>.geoblocks</small></a></div>
           </div>
         </article>
         <article class="sample">
@@ -355,7 +358,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Statue of Liberty</h3>
             <p>The copper-green statue with torch, crown, and tablet on its granite pedestal and the eleven-point star of Fort Wood, rotated to face southeast.</p>
             <ul class="specs"><li>1.5 m per stud</li><li>1,260 blocks</li><li>95 m tall</li></ul>
-            <div class="dl"><a href="samples/Statue_of_Liberty_New_York_Harbor.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+            <div class="dl"><a class="open" href="app/geoblocks.html?file=../samples/Statue_of_Liberty_New_York_Harbor.geoblocks">Open in GeoBlocks <small>→</small></a><a href="samples/Statue_of_Liberty_New_York_Harbor.geoblocks" download>Download file <small>.geoblocks</small></a></div>
           </div>
         </article>
         <article class="sample">
@@ -365,7 +368,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Eiffel Tower</h3>
             <p>Curved legs and arches, both platforms, and the antenna at 330 m, with the Seine, the Pont d'Iéna, and the Champ de Mars aligned to the real city.</p>
             <ul class="specs"><li>5 m per stud</li><li>663 blocks</li><li>330 m tall</li></ul>
-            <div class="dl"><a href="samples/Eiffel_Tower_Paris.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+            <div class="dl"><a class="open" href="app/geoblocks.html?file=../samples/Eiffel_Tower_Paris.geoblocks">Open in GeoBlocks <small>→</small></a><a href="samples/Eiffel_Tower_Paris.geoblocks" download>Download file <small>.geoblocks</small></a></div>
           </div>
         </article>
         <article class="sample">
@@ -375,7 +378,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Stonehenge</h3>
             <p>The sarsen circle and trilithons as they stand today, with fallen stones, Aubrey holes, the ditch, and the Avenue aligned to the midsummer sunrise.</p>
             <ul class="specs"><li>1.6 m per stud</li><li>369 blocks</li><li>7.7 m tall</li></ul>
-            <div class="dl"><a href="samples/Stonehenge_Wiltshire.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+            <div class="dl"><a class="open" href="app/geoblocks.html?file=../samples/Stonehenge_Wiltshire.geoblocks">Open in GeoBlocks <small>→</small></a><a href="samples/Stonehenge_Wiltshire.geoblocks" download>Download file <small>.geoblocks</small></a></div>
           </div>
         </article>
         <article class="sample">
@@ -385,7 +388,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Devils Tower</h3>
             <p>The 264 m rock tower with striped columns, a talus apron, ponderosa pines, a prairie dog town, and the Belle Fourche River.</p>
             <ul class="specs"><li>10 m per stud</li><li>1,065 blocks</li><li>264 m tall</li></ul>
-            <div class="dl"><a href="samples/Devils_Tower_Wyoming.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+            <div class="dl"><a class="open" href="app/geoblocks.html?file=../samples/Devils_Tower_Wyoming.geoblocks">Open in GeoBlocks <small>→</small></a><a href="samples/Devils_Tower_Wyoming.geoblocks" download>Download file <small>.geoblocks</small></a></div>
           </div>
         </article>
         <article class="sample">
@@ -395,14 +398,13 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Delicate Arch</h3>
             <p>A 16 m freestanding arch with uneven legs and layered sandstone colors on slickrock, with hikers for scale.</p>
             <ul class="specs"><li>0.5 m per stud</li><li>696 blocks</li><li>16 m tall</li></ul>
-            <div class="dl"><a href="samples/Delicate_Arch_Utah.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+            <div class="dl"><a class="open" href="app/geoblocks.html?file=../samples/Delicate_Arch_Utah.geoblocks">Open in GeoBlocks <small>→</small></a><a href="samples/Delicate_Arch_Utah.geoblocks" download>Download file <small>.geoblocks</small></a></div>
           </div>
         </article>
       </div>
       <div class="howto">
-        <span><b>1.</b> Download a sample file.</span>
-        <span><b>2.</b> <a href="app/geoblocks.html">Open GeoBlocks</a> and choose <b>File → Open file…</b></span>
-        <span><b>3.</b> Scroll out to see the whole build, then click <b>3D Map</b>.</span>
+        <span><b>Open in GeoBlocks</b> loads a sample straight into the app. Click <b>3D Map</b> to see it on real terrain.</span>
+        <span><b>Download file</b> saves a copy that students can open later with <b>File → Open file…</b></span>
       </div>
     </div>
   </section>
@@ -451,7 +453,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
 
 <footer>
   <div class="wrap">
-    <span>Designed by <a href="https://tbaker.com" target="_blank" rel="noopener">Tom Baker</a>.<span class="version">GeoBlocks version 1.0</span></span>
+    <span>Designed by <a href="https://tbaker.com" target="_blank" rel="noopener">Tom Baker</a>.<span class="version">GeoBlocks version 1.2</span></span>
     <span>3D maps powered by ArcGIS.</span>
   </div>
 </footer>

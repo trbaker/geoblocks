@@ -237,6 +237,8 @@ a.btn { text-decoration: none; }
 .credit { margin: auto 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); }
 .credit a { color: var(--ink); font-weight: 700; text-decoration-color: var(--accent); text-underline-offset: 3px; }
 .credit a:hover { color: var(--accent); }
+.credit .resources { display: block; margin-top: 4px; }
+.credit .version { display: block; margin-top: 4px; font: 500 0.74rem/1.3 var(--font-mono); color: var(--muted); }
 .settings { border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
 .settings summary {
   list-style: none; cursor: pointer; padding: 12px 14px 12px 36px; position: relative;
@@ -416,7 +418,7 @@ a.btn { text-decoration: none; }
       <button class="btn" id="clearBtn" type="button">Clear blocks</button>
     </div>
 
-    <p class="credit">Designed by <a href="https://tbaker.com" target="_blank" rel="noopener">Tom Baker</a>.</p>
+    <p class="credit">Designed by <a href="https://tbaker.com" target="_blank" rel="noopener">Tom Baker</a>.<span class="resources">Resources for <a href="https://trbaker.github.io/geoblocks" target="_blank" rel="noopener">teachers</a>.</span><span class="version" id="appVersion">Version 1.2</span></p>
   </aside>
 
   <main>
@@ -1168,7 +1170,7 @@ $("saveBtn").addEventListener("click", () => download("my-creation.geoblocks", J
 $("openBtn").addEventListener("click", () => $("fileIn").click());
 $("fileIn").addEventListener("change", async (ev) => {
   const f = ev.target.files[0]; if (!f) return;
-  try { load(JSON.parse(await f.text())); toast(`Opened ${f.name}`); if (state.view === "map") renderGlobe(true); }
+  try { load(JSON.parse(await f.text())); fitView(); toast(`Opened ${f.name}`); if (state.view === "map") renderGlobe(true); }
   catch (e) { toast("Couldn't open that file. Choose a .geoblocks file saved from GeoBlocks."); }
   ev.target.value = "";
 });
@@ -1823,6 +1825,14 @@ async function initGlobe() {
   view.ui.add(bmBtn, "top-right");
   // Keep the gallery choice even while the basemap is switched off.
   view.watch("map.basemap", (bm) => { if (bm) savedBasemap = bm; });
+  // The 3D basemaps include OpenStreetMap 3D buildings and trees, which can hide the blocks.
+  // Make those 3D object layers 99% transparent whenever they appear (any basemap in the gallery).
+  const OSM_3D_TYPES = ["scene", "building-scene", "integrated-mesh", "point-cloud", "integrated-mesh-3dtiles"];
+  const fadeOsm3D = (layer) => {
+    if (layer && layer !== brickLayer && OSM_3D_TYPES.includes(layer.type)) layer.opacity = 0.01;
+  };
+  view.map.allLayers.forEach(fadeOsm3D);
+  view.map.allLayers.on("change", (e) => e.added.forEach(fadeOsm3D));
   await view.when();
 }
 
@@ -1958,14 +1968,57 @@ function sample() {
   add(9, 6, 1, 1, 5, G);
 }
 
+/* ---------- Frame the whole creation in the build view ---------- */
+function fitView() {
+  if (!state.bricks.length) return;
+  let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity, top = 0;
+  for (const b of state.bricks) {
+    x0 = Math.min(x0, b.x); x1 = Math.max(x1, b.x + b.w);
+    z0 = Math.min(z0, b.z); z1 = Math.max(z1, b.z + b.d); top = Math.max(top, (b.level + 1) * BH);
+  }
+  const cx = (x0 + x1) / 2, cz = (z0 + z1) / 2;
+  const r = Math.max((x1 - x0) * 0.75, (z1 - z0) * 0.75, top * 0.85, 10);
+  const dist = Math.min(controls.maxDistance, (r / Math.tan((camera.fov * Math.PI / 180) / 2)) * 1.05);
+  controls.target.set(cx, top * 0.4, cz);
+  const dir = new THREE.Vector3(0, 0.55, 1).normalize();          // from the south, looking north
+  camera.position.copy(controls.target).addScaledVector(dir, dist);
+  controls.update();
+}
+
+/* ---------- Open a .geoblocks file from a URL: geoblocks.html?file=path/to/creation.geoblocks ---------- */
+async function openFromUrl(path) {
+  const url = new URL(path, location.href);
+  if (!/^https?:$/.test(url.protocol)) throw new Error("Only web addresses (http or https) can be opened.");
+  const res = await fetch(url, { cache: "no-cache" });
+  if (!res.ok) throw new Error(`The file couldn't be found (error ${res.status}).`);
+  let data;
+  try { data = JSON.parse(await res.text()); } catch (e) { throw new Error("That file isn't a GeoBlocks creation."); }
+  load(data);
+  clearTimeout(persistTimer);       // don't overwrite the student's own saved build until they edit
+  state.undo = [];
+  fitView();
+  return decodeURIComponent(url.pathname.split("/").pop() || "creation");
+}
+
 /* ---------- Boot ---------- */
-let restored = false;
-try {
-  const saved = JSON.parse(localStorage.getItem("brick-atlas") || "null");
-  if (saved && saved.bricks && saved.bricks.length) { load(saved); restored = true; }
-} catch (e) {}
-if (!restored) sample();
-state.undo = [];
+function bootLocal() {
+  let restored = false;
+  try {
+    const saved = JSON.parse(localStorage.getItem("brick-atlas") || "null");
+    if (saved && saved.bricks && saved.bricks.length) { load(saved); restored = true; }
+  } catch (e) {}
+  if (!restored) sample();
+  state.undo = [];
+}
+const fileParam = new URLSearchParams(location.search).get("file");
+if (fileParam) {
+  toast("Opening creation…");
+  openFromUrl(fileParam)
+    .then((name) => { syncUI(); matchPreset(); clearTimeout(persistTimer); toast(`Opened ${name}`); })
+    .catch((e) => { bootLocal(); syncUI(); matchPreset(); toast(`Couldn't open that creation. ${e.message}`); });
+} else {
+  bootLocal();
+}
 syncUI();
 matchPreset();
 resize();

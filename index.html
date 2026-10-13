@@ -162,6 +162,25 @@ section + section { border-top: 1px solid var(--line); }
 footer { border-top: 1px solid var(--line); padding-block: 26px; color: var(--muted); font-size: 0.92rem; }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
 footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+/* Sample creations */
+.samples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 32px; }
+.sample { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.sample .pic { margin: 0; position: relative; aspect-ratio: 4 / 3; max-width: 100%; overflow: hidden; background: #c9dcec; border-bottom: 1px solid var(--line); }
+.sample .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+.sample .body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.sample .kind { font: 700 0.74rem/1 var(--font-body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.sample p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.sample .specs { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 0; padding: 0; list-style: none; }
+.sample .specs li { font: 500 0.76rem/1 var(--font-mono); border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; color: var(--ink); }
+.sample .dl { margin-top: auto; padding-top: 6px; }
+.sample .dl a { display: flex; align-items: center; justify-content: space-between; gap: 10px; text-decoration: none; font-weight: 700; padding: 11px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); }
+.sample .dl a:hover { border-color: var(--ink); }
+.sample .dl small { font: 500 0.78rem var(--font-mono); color: var(--muted); }
+.howto { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 14px 18px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 0.95rem; }
+.howto b { color: var(--ink); }
+@media (max-width: 980px) { .samples { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .samples { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
@@ -173,8 +192,9 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
       <a href="#lessons">Lessons</a>
+      <a href="#samples">Samples</a>
       <a href="#start">Getting started</a>
-      <a class="btn primary small" href="geoblocks.html">Open GeoBlocks</a>
+      <a class="btn primary small" href="app/geoblocks.html">Open GeoBlocks</a>
     </nav>
   </div>
 </header>
@@ -187,8 +207,9 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
         <h1>Build it with blocks. <em>Put it on the map.</em></h1>
         <p class="lead">GeoBlocks is a 3D block builder that runs in a web browser. Students design with colorful building blocks, give their creation a real latitude, longitude, and scale, and then see it standing on real terrain in an ArcGIS 3D map.</p>
         <div class="cta">
-          <a class="btn primary" href="geoblocks.html">Open GeoBlocks</a>
+          <a class="btn primary" href="app/geoblocks.html">Open GeoBlocks</a>
           <a class="btn" href="#lessons">Browse 6 lessons</a>
+          <a class="btn" href="#samples">See sample builds</a>
         </div>
         <ul class="facts">
           <li>No student accounts</li><li>Nothing to install</li><li>Runs in the browser</li>
@@ -247,7 +268,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Same House, Different Places</h3>
             <p>Students move one small house to three places around the world and compare physical and human characteristics in 3D.</p>
             <dl><dt>Time</dt><dd>45–50 min</dd><dt>Standards</dt><dd>Nat'l Geography Std 1, 4 · C3 D2.Geo.2, 5</dd></dl>
-            <div class="dl"><a href="GeoBlocks_MS_Geography_Same_House_Different_Places.docx" download>Download lesson <small>.docx</small></a></div>
+            <div class="dl"><a href="lessons/GeoBlocks_MS_Geography_Same_House_Different_Places.docx" download>Download lesson <small>.docx</small></a></div>
           </div>
         </article>
 
@@ -258,7 +279,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Pavilion by the Numbers</h3>
             <p>Teams design a park pavilion to a client brief, predict its real size with a scale, then discover what happens to area when the scale changes.</p>
             <dl><dt>Time</dt><dd>55–60 min</dd><dt>Standards</dt><dd>NGSS MS-ETS1-1, 2 · CCSS 7.G.A.1, 7.RP.A.2</dd></dl>
-            <div class="dl"><a href="GeoBlocks_STEM_Pavilion_by_the_Numbers.docx" download>Download lesson <small>.docx</small></a></div>
+            <div class="dl"><a href="lessons/GeoBlocks_STEM_Pavilion_by_the_Numbers.docx" download>Download lesson <small>.docx</small></a></div>
           </div>
         </article>
 
@@ -269,7 +290,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Field Station: Reading the Landscape</h3>
             <p>Students place a research station at Kilimanjaro, Uluru, and a beach, explain the processes that shaped each, and raise it above storm surge.</p>
             <dl><dt>Time</dt><dd>50 min</dd><dt>Standards</dt><dd>NGSS MS-ESS2-2, MS-ESS3-2</dd></dl>
-            <div class="dl"><a href="GeoBlocks_Gr8_Earth_Science_Field_Station.docx" download>Download lesson <small>.docx</small></a></div>
+            <div class="dl"><a href="lessons/GeoBlocks_Gr8_Earth_Science_Field_Station.docx" download>Download lesson <small>.docx</small></a></div>
           </div>
         </article>
 
@@ -280,7 +301,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Step Pyramid: Volume by Layers</h3>
             <p>Students build a stepped pyramid, find its volume layer by layer, compare it to V = ⅓Bh, and see how area and volume change with scale.</p>
             <dl><dt>Time</dt><dd>55–60 min</dd><dt>Standards</dt><dd>CCSS HSG-GMD.A.1, A.3 · HSG-MG.A.1, A.3</dd></dl>
-            <div class="dl"><a href="GeoBlocks_Gr9_Geometry_Step_Pyramid.docx" download>Download lesson <small>.docx</small></a></div>
+            <div class="dl"><a href="lessons/GeoBlocks_Gr9_Geometry_Step_Pyramid.docx" download>Download lesson <small>.docx</small></a></div>
           </div>
         </article>
 
@@ -291,7 +312,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Layers of a Place</h3>
             <p>Groups trace the layered history of Paris's Champ de Mars, New York's Central Park, or Tokyo's Yoyogi Park, then design a marker for the most significant layer.</p>
             <dl><dt>Time</dt><dd>50–55 min</dd><dt>Standards</dt><dd>C3 D2.His.1, 2, 3, 10 · CCSS RH.9-10.2</dd></dl>
-            <div class="dl"><a href="GeoBlocks_Gr10_History_Layers_of_a_Place.docx" download>Download lesson <small>.docx</small></a></div>
+            <div class="dl"><a href="lessons/GeoBlocks_Gr10_History_Layers_of_a_Place.docx" download>Download lesson <small>.docx</small></a></div>
           </div>
         </article>
 
@@ -302,10 +323,85 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
             <h3>Site to Scene: A Massing Study</h3>
             <p>Students turn a client program into a massing model on a real site and publish it to ArcGIS Online as a 3D web scene for peer review.</p>
             <dl><dt>Time</dt><dd>Two 50-min periods</dd><dt>Standards</dt><dd>CCTC AC01, ACDP01, 05, 06, 07 · ISTE 1.6</dd></dl>
-            <div class="dl"><a href="GeoBlocks_CTE_Architecture_Site_to_Scene.docx" download>Download lesson <small>.docx</small></a></div>
+            <div class="dl"><a href="lessons/GeoBlocks_CTE_Architecture_Site_to_Scene.docx" download>Download lesson <small>.docx</small></a></div>
           </div>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <section id="samples">
+    <div class="wrap">
+      <p class="eyebrow">Sample creations</p>
+      <h2>Six builds to open, explore, and remix</h2>
+      <p class="lead">Each sample is a ready-made GeoBlocks file placed at its real location and scale. Open one to show students what's possible, then switch to the 3D Map to see it on real terrain. The samples range from half a meter to ten meters per stud.</p>
+      <div class="samples">
+        <article class="sample">
+          <figure class="pic"><img src="samples/Esri_Building_Q_preview.jpg" alt="Block model of a three-story office building with rooftop solar panels, palm trees, a parking lot, and an orange grove." loading="lazy"></figure>
+          <div class="body">
+            <span class="kind">Building · Redlands, California</span>
+            <h3>Esri Building Q</h3>
+            <p>Esri's three-story executive headquarters with glass and redwood bands, an atrium with bridges, rooftop solar, palms, and an orange grove.</p>
+            <ul class="specs"><li>6 ft per stud</li><li>1,072 blocks</li><li>3 stories</li></ul>
+            <div class="dl"><a href="samples/Esri_Building_Q_Redlands.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+          </div>
+        </article>
+        <article class="sample">
+          <figure class="pic"><img src="samples/Statue_of_Liberty_preview.jpg" alt="Block model of the Statue of Liberty on its pedestal and star-shaped fort, surrounded by water and ferries." loading="lazy"></figure>
+          <div class="body">
+            <span class="kind">Monument · New York Harbor</span>
+            <h3>Statue of Liberty</h3>
+            <p>The copper-green statue with torch, crown, and tablet on its granite pedestal and the eleven-point star of Fort Wood, rotated to face southeast.</p>
+            <ul class="specs"><li>1.5 m per stud</li><li>1,260 blocks</li><li>95 m tall</li></ul>
+            <div class="dl"><a href="samples/Statue_of_Liberty_New_York_Harbor.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+          </div>
+        </article>
+        <article class="sample">
+          <figure class="pic"><img src="samples/Eiffel_Tower_preview.jpg" alt="Block model of the Eiffel Tower with the Seine, a bridge, and tree-lined lawns." loading="lazy"></figure>
+          <div class="body">
+            <span class="kind">Monument · Paris, France</span>
+            <h3>Eiffel Tower</h3>
+            <p>Curved legs and arches, both platforms, and the antenna at 330 m, with the Seine, the Pont d'Iéna, and the Champ de Mars aligned to the real city.</p>
+            <ul class="specs"><li>5 m per stud</li><li>663 blocks</li><li>330 m tall</li></ul>
+            <div class="dl"><a href="samples/Eiffel_Tower_Paris.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+          </div>
+        </article>
+        <article class="sample">
+          <figure class="pic"><img src="samples/Stonehenge_Wiltshire_preview.jpg" alt="Block model of Stonehenge seen from above: a ring of standing stones with lintels inside a circular ditch." loading="lazy"></figure>
+          <div class="body">
+            <span class="kind">Monument · Wiltshire, England</span>
+            <h3>Stonehenge</h3>
+            <p>The sarsen circle and trilithons as they stand today, with fallen stones, Aubrey holes, the ditch, and the Avenue aligned to the midsummer sunrise.</p>
+            <ul class="specs"><li>1.6 m per stud</li><li>369 blocks</li><li>7.7 m tall</li></ul>
+            <div class="dl"><a href="samples/Stonehenge_Wiltshire.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+          </div>
+        </article>
+        <article class="sample">
+          <figure class="pic"><img src="samples/Devils_Tower_Wyoming_preview.jpg" alt="Block model of Devils Tower, a flared striped rock column rising above a forest and river." loading="lazy"></figure>
+          <div class="body">
+            <span class="kind">Natural feature · Wyoming</span>
+            <h3>Devils Tower</h3>
+            <p>The 264 m rock tower with striped columns, a talus apron, ponderosa pines, a prairie dog town, and the Belle Fourche River.</p>
+            <ul class="specs"><li>10 m per stud</li><li>1,065 blocks</li><li>264 m tall</li></ul>
+            <div class="dl"><a href="samples/Devils_Tower_Wyoming.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+          </div>
+        </article>
+        <article class="sample">
+          <figure class="pic"><img src="samples/Delicate_Arch_Utah_preview.jpg" alt="Block model of Delicate Arch, an orange sandstone arch on pale slickrock with small hikers." loading="lazy"></figure>
+          <div class="body">
+            <span class="kind">Natural feature · Arches National Park, Utah</span>
+            <h3>Delicate Arch</h3>
+            <p>A 16 m freestanding arch with uneven legs and layered sandstone colors on slickrock, with hikers for scale.</p>
+            <ul class="specs"><li>0.5 m per stud</li><li>696 blocks</li><li>16 m tall</li></ul>
+            <div class="dl"><a href="samples/Delicate_Arch_Utah.geoblocks" download>Download sample <small>.geoblocks</small></a></div>
+          </div>
+        </article>
+      </div>
+      <div class="howto">
+        <span><b>1.</b> Download a sample file.</span>
+        <span><b>2.</b> <a href="app/geoblocks.html">Open GeoBlocks</a> and choose <b>File → Open file…</b></span>
+        <span><b>3.</b> Scroll out to see the whole build, then click <b>3D Map</b>.</span>
       </div>
     </div>
   </section>
@@ -347,7 +443,7 @@ footer a { font-weight: 700; color: var(--ink); text-decoration-color: var(--acc
     <div class="wrap">
       <h2>Ready to build?</h2>
       <p class="lead">Open GeoBlocks, drop a house on the prairie, and fly it to Tokyo. It takes about a minute.</p>
-      <a class="btn primary" href="geoblocks.html">Open GeoBlocks</a>
+      <a class="btn primary" href="app/geoblocks.html">Open GeoBlocks</a>
     </div>
   </section>
 </main>

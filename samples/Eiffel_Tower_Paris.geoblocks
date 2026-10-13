@@ -1,0 +1,5321 @@
+{
+ "app": "GeoBlocks",
+ "version": 1,
+ "title": "Eiffel Tower, Champ de Mars, Paris",
+ "notes": "Sample creation. 1 stud = 5 m; one block = 6 m. 330 m to the antenna tip; first platform about 57 m, second about 116 m, top platform 276 m. Rotated 318 degrees so the Champ de Mars points toward the Ecole Militaire.",
+ "origin": {
+  "latitude": 48.858222,
+  "longitude": 2.2945,
+  "rotationDeg": 318
+ },
+ "scale": {
+  "studLength": 5,
+  "unit": "m"
+ },
+ "bricks": [
+  {
+   "x": -32,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -26,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -20,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -14,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -8,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -2,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 4,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 10,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 16,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 22,
+   "z": -32,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 28,
+   "z": -32,
+   "w": 2,
+   "d": 6,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 30,
+   "z": -32,
+   "w": 2,
+   "d": 6,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -32,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -26,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -20,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -14,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -8,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -2,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 4,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 10,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 16,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 22,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -32,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -26,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -20,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -14,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -8,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -2,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 4,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 10,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 16,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 22,
+   "z": -28,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -32,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -26,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -20,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -14,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -8,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -2,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 4,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 10,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 16,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 22,
+   "z": -26,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 28,
+   "z": -26,
+   "w": 4,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -32,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -28,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -24,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -20,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -16,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -12,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -8,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -4,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 0,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 4,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 8,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 12,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 16,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 20,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 24,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 28,
+   "z": -24,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Bright Blue"
+  },
+  {
+   "x": -32,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": -28,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": -24,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": -20,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": -16,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": -12,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": -8,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": -4,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": 0,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": 4,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": 8,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": 12,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": 16,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": 20,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": 24,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": 28,
+   "z": -23,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Light Gray"
+  },
+  {
+   "x": -32,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": -26,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": -20,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": -14,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": -8,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": -2,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": 4,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": 10,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": 16,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": 22,
+   "z": -21,
+   "w": 6,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": 28,
+   "z": -21,
+   "w": 4,
+   "d": 2,
+   "level": 0,
+   "color": "Dark Gray"
+  },
+  {
+   "x": -13,
+   "z": -13,
+   "w": 2,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": -13,
+   "w": 2,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": -13,
+   "w": 1,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": -13,
+   "w": 2,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 10,
+   "z": -13,
+   "w": 2,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 12,
+   "z": -13,
+   "w": 1,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -13,
+   "z": -9,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": -9,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": -9,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 12,
+   "z": -9,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -13,
+   "z": 8,
+   "w": 2,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": 8,
+   "w": 2,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": 8,
+   "w": 1,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": 8,
+   "w": 2,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 10,
+   "z": 8,
+   "w": 2,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 12,
+   "z": 8,
+   "w": 1,
+   "d": 4,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -13,
+   "z": 12,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": 12,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": 12,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 12,
+   "z": 12,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 10,
+   "z": 8,
+   "w": 2,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": 7,
+   "w": 4,
+   "d": 1,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 10,
+   "z": -11,
+   "w": 2,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": -12,
+   "w": 4,
+   "d": 1,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": 8,
+   "w": 2,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": -11,
+   "w": 2,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 8,
+   "w": 1,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 7,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -11,
+   "w": 1,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -12,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": 8,
+   "w": 2,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": 7,
+   "w": 4,
+   "d": 1,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": -11,
+   "w": 2,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": -12,
+   "w": 4,
+   "d": 1,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": 8,
+   "w": 2,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": -11,
+   "w": 2,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -12,
+   "z": 8,
+   "w": 1,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -12,
+   "z": 7,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -12,
+   "z": -11,
+   "w": 1,
+   "d": 4,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -12,
+   "z": -12,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": -11,
+   "w": 2,
+   "d": 4,
+   "level": 2,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": -11,
+   "w": 2,
+   "d": 4,
+   "level": 2,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -11,
+   "w": 2,
+   "d": 4,
+   "level": 2,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 9,
+   "z": -11,
+   "w": 2,
+   "d": 4,
+   "level": 2,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": 7,
+   "w": 2,
+   "d": 4,
+   "level": 2,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": 7,
+   "w": 2,
+   "d": 4,
+   "level": 2,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 7,
+   "w": 2,
+   "d": 4,
+   "level": 2,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 9,
+   "z": 7,
+   "w": 2,
+   "d": 4,
+   "level": 2,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 9,
+   "z": 7,
+   "w": 2,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 6,
+   "w": 4,
+   "d": 1,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 9,
+   "z": -10,
+   "w": 2,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -11,
+   "w": 4,
+   "d": 1,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 7,
+   "w": 2,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -10,
+   "w": 2,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": 7,
+   "w": 1,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": 6,
+   "w": 1,
+   "d": 1,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": -10,
+   "w": 1,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": -11,
+   "w": 1,
+   "d": 1,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 7,
+   "w": 2,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -10,
+   "z": 6,
+   "w": 4,
+   "d": 1,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": -10,
+   "w": 2,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -10,
+   "z": -11,
+   "w": 4,
+   "d": 1,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -10,
+   "z": 7,
+   "w": 2,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -10,
+   "z": -10,
+   "w": 2,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": 7,
+   "w": 1,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": 6,
+   "w": 1,
+   "d": 1,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": -10,
+   "w": 1,
+   "d": 4,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": -11,
+   "w": 1,
+   "d": 1,
+   "level": 3,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -10,
+   "z": -10,
+   "w": 2,
+   "d": 4,
+   "level": 4,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": -10,
+   "w": 2,
+   "d": 4,
+   "level": 4,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": -10,
+   "w": 2,
+   "d": 4,
+   "level": 4,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": -10,
+   "w": 2,
+   "d": 4,
+   "level": 4,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -10,
+   "z": 6,
+   "w": 2,
+   "d": 4,
+   "level": 4,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 6,
+   "w": 2,
+   "d": 4,
+   "level": 4,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": 6,
+   "w": 2,
+   "d": 4,
+   "level": 4,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": 6,
+   "w": 2,
+   "d": 4,
+   "level": 4,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 5,
+   "w": 2,
+   "d": 4,
+   "level": 5,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -9,
+   "w": 2,
+   "d": 4,
+   "level": 5,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": 5,
+   "w": 2,
+   "d": 4,
+   "level": 5,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": -9,
+   "w": 2,
+   "d": 4,
+   "level": 5,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": 5,
+   "w": 2,
+   "d": 4,
+   "level": 5,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": -9,
+   "w": 2,
+   "d": 4,
+   "level": 5,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": 5,
+   "w": 2,
+   "d": 4,
+   "level": 5,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": -9,
+   "w": 2,
+   "d": 4,
+   "level": 5,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": -9,
+   "w": 2,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": -9,
+   "w": 2,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -9,
+   "w": 1,
+   "d": 1,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": -9,
+   "w": 4,
+   "d": 1,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": -9,
+   "w": 1,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": -8,
+   "w": 2,
+   "d": 3,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -8,
+   "w": 1,
+   "d": 3,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": -5,
+   "w": 1,
+   "d": 1,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": -5,
+   "w": 1,
+   "d": 1,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": 4,
+   "w": 1,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": 4,
+   "w": 1,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 5,
+   "w": 2,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": 5,
+   "w": 1,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": 5,
+   "w": 2,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 5,
+   "w": 1,
+   "d": 4,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -9,
+   "z": 8,
+   "w": 1,
+   "d": 1,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 8,
+   "w": 1,
+   "d": 1,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": 8,
+   "w": 1,
+   "d": 1,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 8,
+   "z": 8,
+   "w": 1,
+   "d": 1,
+   "level": 6,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": 4,
+   "w": 2,
+   "d": 4,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 2,
+   "w": 1,
+   "d": 2,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -6,
+   "w": 1,
+   "d": 4,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": -8,
+   "w": 4,
+   "d": 2,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": -6,
+   "w": 3,
+   "d": 2,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": 4,
+   "w": 2,
+   "d": 4,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": 7,
+   "w": 2,
+   "d": 1,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -8,
+   "w": 2,
+   "d": 1,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": 7,
+   "w": 4,
+   "d": 1,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": -8,
+   "w": 4,
+   "d": 1,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 5,
+   "w": 4,
+   "d": 2,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 4,
+   "w": 4,
+   "d": 1,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": -6,
+   "w": 4,
+   "d": 2,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": -7,
+   "w": 4,
+   "d": 1,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 7,
+   "w": 2,
+   "d": 1,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": -8,
+   "w": 2,
+   "d": 1,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 2,
+   "w": 1,
+   "d": 2,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": -4,
+   "w": 1,
+   "d": 2,
+   "level": 7,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": -8,
+   "w": 2,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": -8,
+   "w": 2,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -4,
+   "z": -8,
+   "w": 4,
+   "d": 1,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -8,
+   "w": 4,
+   "d": 1,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": -8,
+   "w": 2,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": -8,
+   "w": 2,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": -4,
+   "w": 1,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": -4,
+   "w": 1,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 0,
+   "w": 1,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 7,
+   "z": 0,
+   "w": 1,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -8,
+   "z": 4,
+   "w": 2,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": 4,
+   "w": 2,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": 4,
+   "w": 2,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": 4,
+   "w": 2,
+   "d": 4,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -4,
+   "z": 7,
+   "w": 4,
+   "d": 1,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": 7,
+   "w": 4,
+   "d": 1,
+   "level": 8,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": 5,
+   "w": 6,
+   "d": 2,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": -1,
+   "w": 2,
+   "d": 6,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": -7,
+   "w": 2,
+   "d": 6,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": 4,
+   "w": 4,
+   "d": 1,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": 0,
+   "w": 1,
+   "d": 4,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": -4,
+   "w": 1,
+   "d": 4,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -6,
+   "w": 6,
+   "d": 2,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": -7,
+   "w": 4,
+   "d": 1,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 5,
+   "w": 6,
+   "d": 2,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 4,
+   "w": 4,
+   "d": 1,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -7,
+   "w": 4,
+   "d": 1,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": -6,
+   "w": 6,
+   "d": 2,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": 4,
+   "w": 4,
+   "d": 1,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": -7,
+   "w": 4,
+   "d": 1,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": -2,
+   "w": 2,
+   "d": 6,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": -4,
+   "w": 3,
+   "d": 2,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": 5,
+   "w": 2,
+   "d": 2,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": 0,
+   "w": 1,
+   "d": 4,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": -2,
+   "w": 1,
+   "d": 2,
+   "level": 9,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": -7,
+   "w": 4,
+   "d": 1,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": -3,
+   "z": -7,
+   "w": 4,
+   "d": 1,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": 1,
+   "z": -7,
+   "w": 4,
+   "d": 1,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": 5,
+   "z": -7,
+   "w": 2,
+   "d": 1,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": -7,
+   "z": -6,
+   "w": 1,
+   "d": 4,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": -6,
+   "z": -6,
+   "w": 2,
+   "d": 3,
+   "level": 10,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -4,
+   "z": -6,
+   "w": 1,
+   "d": 3,
+   "level": 10,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": -6,
+   "w": 2,
+   "d": 3,
+   "level": 10,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": -6,
+   "w": 1,
+   "d": 3,
+   "level": 10,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 6,
+   "z": -6,
+   "w": 1,
+   "d": 4,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": -7,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": 6,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": -7,
+   "z": 2,
+   "w": 1,
+   "d": 4,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": 6,
+   "z": 2,
+   "w": 1,
+   "d": 4,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": -6,
+   "z": 3,
+   "w": 2,
+   "d": 3,
+   "level": 10,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -4,
+   "z": 3,
+   "w": 1,
+   "d": 3,
+   "level": 10,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": 3,
+   "w": 2,
+   "d": 3,
+   "level": 10,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": 3,
+   "w": 1,
+   "d": 3,
+   "level": 10,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": 6,
+   "w": 4,
+   "d": 1,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": -3,
+   "z": 6,
+   "w": 4,
+   "d": 1,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": 1,
+   "z": 6,
+   "w": 4,
+   "d": 1,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": 5,
+   "z": 6,
+   "w": 2,
+   "d": 1,
+   "level": 10,
+   "color": "Tan"
+  },
+  {
+   "x": 5,
+   "z": 3,
+   "w": 2,
+   "d": 4,
+   "level": 11,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": -7,
+   "w": 2,
+   "d": 4,
+   "level": 11,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": 3,
+   "w": 2,
+   "d": 4,
+   "level": 11,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": -7,
+   "w": 2,
+   "d": 4,
+   "level": 11,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 3,
+   "w": 2,
+   "d": 4,
+   "level": 11,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -7,
+   "w": 2,
+   "d": 4,
+   "level": 11,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": 3,
+   "w": 2,
+   "d": 4,
+   "level": 11,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -7,
+   "z": -7,
+   "w": 2,
+   "d": 4,
+   "level": 11,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": -6,
+   "w": 2,
+   "d": 3,
+   "level": 12,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -4,
+   "z": -6,
+   "w": 1,
+   "d": 3,
+   "level": 12,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": -6,
+   "w": 2,
+   "d": 3,
+   "level": 12,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": -6,
+   "w": 1,
+   "d": 3,
+   "level": 12,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": 3,
+   "w": 2,
+   "d": 3,
+   "level": 12,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -4,
+   "z": 3,
+   "w": 1,
+   "d": 3,
+   "level": 12,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": 3,
+   "w": 2,
+   "d": 3,
+   "level": 12,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 5,
+   "z": 3,
+   "w": 1,
+   "d": 3,
+   "level": 12,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": 3,
+   "w": 2,
+   "d": 3,
+   "level": 13,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": -6,
+   "w": 2,
+   "d": 3,
+   "level": 13,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": 3,
+   "w": 1,
+   "d": 3,
+   "level": 13,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": -6,
+   "w": 1,
+   "d": 3,
+   "level": 13,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 3,
+   "w": 2,
+   "d": 3,
+   "level": 13,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -6,
+   "w": 2,
+   "d": 3,
+   "level": 13,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": 3,
+   "w": 1,
+   "d": 3,
+   "level": 13,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -6,
+   "z": -6,
+   "w": 1,
+   "d": 3,
+   "level": 13,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -5,
+   "w": 2,
+   "d": 2,
+   "level": 14,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": -5,
+   "w": 2,
+   "d": 2,
+   "level": 14,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 3,
+   "w": 2,
+   "d": 2,
+   "level": 14,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": 3,
+   "w": 2,
+   "d": 2,
+   "level": 14,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": 3,
+   "w": 2,
+   "d": 2,
+   "level": 15,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": -5,
+   "w": 2,
+   "d": 2,
+   "level": 15,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 3,
+   "w": 2,
+   "d": 2,
+   "level": 15,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -5,
+   "w": 2,
+   "d": 2,
+   "level": 15,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -5,
+   "w": 2,
+   "d": 3,
+   "level": 16,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -5,
+   "w": 1,
+   "d": 3,
+   "level": 16,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -5,
+   "w": 2,
+   "d": 3,
+   "level": 16,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": -5,
+   "w": 1,
+   "d": 3,
+   "level": 16,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 2,
+   "w": 2,
+   "d": 3,
+   "level": 16,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 1,
+   "d": 3,
+   "level": 16,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": 2,
+   "w": 2,
+   "d": 3,
+   "level": 16,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": 2,
+   "w": 1,
+   "d": 3,
+   "level": 16,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": 2,
+   "w": 2,
+   "d": 3,
+   "level": 17,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 3,
+   "z": -5,
+   "w": 2,
+   "d": 3,
+   "level": 17,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": 2,
+   "w": 1,
+   "d": 3,
+   "level": 17,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -5,
+   "w": 1,
+   "d": 3,
+   "level": 17,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -4,
+   "z": 2,
+   "w": 2,
+   "d": 3,
+   "level": 17,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -4,
+   "z": -5,
+   "w": 2,
+   "d": 3,
+   "level": 17,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 2,
+   "w": 1,
+   "d": 3,
+   "level": 17,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -5,
+   "w": 1,
+   "d": 3,
+   "level": 17,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -5,
+   "w": 2,
+   "d": 3,
+   "level": 18,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -5,
+   "w": 1,
+   "d": 3,
+   "level": 18,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -5,
+   "w": 2,
+   "d": 3,
+   "level": 18,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": -5,
+   "w": 1,
+   "d": 3,
+   "level": 18,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 2,
+   "w": 2,
+   "d": 3,
+   "level": 18,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 1,
+   "d": 3,
+   "level": 18,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": 2,
+   "w": 2,
+   "d": 3,
+   "level": 18,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 4,
+   "z": 2,
+   "w": 1,
+   "d": 3,
+   "level": 18,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": 3,
+   "w": 6,
+   "d": 2,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": 1,
+   "w": 6,
+   "d": 2,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 6,
+   "d": 2,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -3,
+   "w": 6,
+   "d": 2,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -5,
+   "w": 6,
+   "d": 2,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -1,
+   "w": 2,
+   "d": 6,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -5,
+   "w": 2,
+   "d": 4,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -1,
+   "w": 2,
+   "d": 6,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -5,
+   "w": 2,
+   "d": 4,
+   "level": 19,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": -5,
+   "w": 4,
+   "d": 1,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": -1,
+   "z": -5,
+   "w": 4,
+   "d": 1,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": 3,
+   "z": -5,
+   "w": 2,
+   "d": 1,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": -5,
+   "z": -4,
+   "w": 1,
+   "d": 4,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": 4,
+   "z": -4,
+   "w": 1,
+   "d": 4,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": -3,
+   "z": -3,
+   "w": 4,
+   "d": 1,
+   "level": 20,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": -3,
+   "w": 2,
+   "d": 1,
+   "level": 20,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 20,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 20,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 0,
+   "w": 1,
+   "d": 4,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": 4,
+   "z": 0,
+   "w": 1,
+   "d": 4,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 4,
+   "d": 1,
+   "level": 20,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": 2,
+   "w": 2,
+   "d": 1,
+   "level": 20,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -5,
+   "z": 4,
+   "w": 4,
+   "d": 1,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": -1,
+   "z": 4,
+   "w": 4,
+   "d": 1,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": 3,
+   "z": 4,
+   "w": 2,
+   "d": 1,
+   "level": 20,
+   "color": "Tan"
+  },
+  {
+   "x": -1,
+   "z": 2,
+   "w": 4,
+   "d": 1,
+   "level": 21,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 21,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -3,
+   "w": 4,
+   "d": 1,
+   "level": 21,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 2,
+   "d": 1,
+   "level": 21,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -3,
+   "w": 2,
+   "d": 1,
+   "level": 21,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 21,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -3,
+   "w": 4,
+   "d": 1,
+   "level": 22,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": -3,
+   "w": 2,
+   "d": 1,
+   "level": 22,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 22,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 22,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 4,
+   "d": 1,
+   "level": 22,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": 2,
+   "w": 2,
+   "d": 1,
+   "level": 22,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": 2,
+   "w": 4,
+   "d": 1,
+   "level": 23,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 23,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -3,
+   "w": 4,
+   "d": 1,
+   "level": 23,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 2,
+   "d": 1,
+   "level": 23,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -3,
+   "w": 2,
+   "d": 1,
+   "level": 23,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 23,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -3,
+   "w": 4,
+   "d": 1,
+   "level": 24,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": -3,
+   "w": 2,
+   "d": 1,
+   "level": 24,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 24,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 24,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 4,
+   "d": 1,
+   "level": 24,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": 2,
+   "w": 2,
+   "d": 1,
+   "level": 24,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": 2,
+   "w": 4,
+   "d": 1,
+   "level": 25,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 25,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -3,
+   "w": 4,
+   "d": 1,
+   "level": 25,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 2,
+   "d": 1,
+   "level": 25,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -3,
+   "w": 2,
+   "d": 1,
+   "level": 25,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 25,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -3,
+   "w": 4,
+   "d": 1,
+   "level": 26,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": -3,
+   "w": 2,
+   "d": 1,
+   "level": 26,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 26,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 26,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 4,
+   "d": 1,
+   "level": 26,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 1,
+   "z": 2,
+   "w": 2,
+   "d": 1,
+   "level": 26,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 27,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 27,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 28,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 28,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 29,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 29,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 30,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 30,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 31,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 31,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -3,
+   "z": -3,
+   "w": 4,
+   "d": 1,
+   "level": 32,
+   "color": "Tan"
+  },
+  {
+   "x": 1,
+   "z": -3,
+   "w": 2,
+   "d": 1,
+   "level": 32,
+   "color": "Tan"
+  },
+  {
+   "x": -3,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 32,
+   "color": "Tan"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 32,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 32,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 2,
+   "z": -2,
+   "w": 1,
+   "d": 4,
+   "level": 32,
+   "color": "Tan"
+  },
+  {
+   "x": -3,
+   "z": 2,
+   "w": 4,
+   "d": 1,
+   "level": 32,
+   "color": "Tan"
+  },
+  {
+   "x": 1,
+   "z": 2,
+   "w": 2,
+   "d": 1,
+   "level": 32,
+   "color": "Tan"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 33,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 33,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 34,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 34,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 35,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 35,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 36,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 36,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 37,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 38,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 39,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 40,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 41,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 42,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 43,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 44,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 45,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -2,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 46,
+   "color": "Tan"
+  },
+  {
+   "x": 0,
+   "z": -2,
+   "w": 2,
+   "d": 4,
+   "level": 46,
+   "color": "Tan"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 47,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 48,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 2,
+   "d": 2,
+   "level": 49,
+   "color": "Light Gray"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 1,
+   "d": 1,
+   "level": 50,
+   "color": "White"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 1,
+   "d": 1,
+   "level": 51,
+   "color": "Bright Red"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 1,
+   "d": 1,
+   "level": 52,
+   "color": "White"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 1,
+   "d": 1,
+   "level": 53,
+   "color": "Bright Red"
+  },
+  {
+   "x": -1,
+   "z": -1,
+   "w": 1,
+   "d": 1,
+   "level": 54,
+   "color": "White"
+  },
+  {
+   "x": -4,
+   "z": -32,
+   "w": 2,
+   "d": 6,
+   "level": 1,
+   "color": "Light Gray"
+  },
+  {
+   "x": -4,
+   "z": -26,
+   "w": 2,
+   "d": 3,
+   "level": 1,
+   "color": "Light Gray"
+  },
+  {
+   "x": -2,
+   "z": -32,
+   "w": 2,
+   "d": 6,
+   "level": 1,
+   "color": "Light Gray"
+  },
+  {
+   "x": -2,
+   "z": -26,
+   "w": 2,
+   "d": 3,
+   "level": 1,
+   "color": "Light Gray"
+  },
+  {
+   "x": 0,
+   "z": -32,
+   "w": 2,
+   "d": 6,
+   "level": 1,
+   "color": "Light Gray"
+  },
+  {
+   "x": 0,
+   "z": -26,
+   "w": 2,
+   "d": 3,
+   "level": 1,
+   "color": "Light Gray"
+  },
+  {
+   "x": 2,
+   "z": -32,
+   "w": 2,
+   "d": 6,
+   "level": 1,
+   "color": "Light Gray"
+  },
+  {
+   "x": 2,
+   "z": -26,
+   "w": 2,
+   "d": 3,
+   "level": 1,
+   "color": "Light Gray"
+  },
+  {
+   "x": -4,
+   "z": -30,
+   "w": 2,
+   "d": 1,
+   "level": 2,
+   "color": "Light Gray"
+  },
+  {
+   "x": 2,
+   "z": -30,
+   "w": 2,
+   "d": 1,
+   "level": 2,
+   "color": "Light Gray"
+  },
+  {
+   "x": -4,
+   "z": -27,
+   "w": 2,
+   "d": 1,
+   "level": 2,
+   "color": "Light Gray"
+  },
+  {
+   "x": 2,
+   "z": -27,
+   "w": 2,
+   "d": 1,
+   "level": 2,
+   "color": "Light Gray"
+  },
+  {
+   "x": -26,
+   "z": -30,
+   "w": 6,
+   "d": 2,
+   "level": 1,
+   "color": "White"
+  },
+  {
+   "x": -25,
+   "z": -30,
+   "w": 4,
+   "d": 2,
+   "level": 2,
+   "color": "Azure"
+  },
+  {
+   "x": -25,
+   "z": -30,
+   "w": 4,
+   "d": 1,
+   "level": 3,
+   "color": "White"
+  },
+  {
+   "x": 12,
+   "z": -27,
+   "w": 6,
+   "d": 2,
+   "level": 1,
+   "color": "White"
+  },
+  {
+   "x": 13,
+   "z": -27,
+   "w": 4,
+   "d": 2,
+   "level": 2,
+   "color": "Azure"
+  },
+  {
+   "x": 13,
+   "z": -27,
+   "w": 4,
+   "d": 1,
+   "level": 3,
+   "color": "White"
+  },
+  {
+   "x": 22,
+   "z": -31,
+   "w": 6,
+   "d": 2,
+   "level": 1,
+   "color": "White"
+  },
+  {
+   "x": 23,
+   "z": -31,
+   "w": 4,
+   "d": 2,
+   "level": 2,
+   "color": "Azure"
+  },
+  {
+   "x": 23,
+   "z": -31,
+   "w": 4,
+   "d": 1,
+   "level": 3,
+   "color": "White"
+  },
+  {
+   "x": -11,
+   "z": 14,
+   "w": 1,
+   "d": 6,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -11,
+   "z": 20,
+   "w": 1,
+   "d": 6,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -11,
+   "z": 26,
+   "w": 1,
+   "d": 6,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": 10,
+   "z": 14,
+   "w": 1,
+   "d": 6,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": 10,
+   "z": 20,
+   "w": 1,
+   "d": 6,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": 10,
+   "z": 26,
+   "w": 1,
+   "d": 6,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -10,
+   "z": 16,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -6,
+   "z": 16,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -2,
+   "z": 16,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": 2,
+   "z": 16,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": 6,
+   "z": 16,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -10,
+   "z": 26,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -6,
+   "z": 26,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -2,
+   "z": 26,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": 2,
+   "z": 26,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": 6,
+   "z": 26,
+   "w": 4,
+   "d": 1,
+   "level": 0,
+   "color": "Tan"
+  },
+  {
+   "x": -26,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -27,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -25,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 13,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 15,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -27,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -25,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -27,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -25,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 21,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 23,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -27,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -25,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 25,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 27,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -27,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -25,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 29,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 31,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -26,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -21,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -19,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 13,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 15,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -21,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -19,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -21,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -19,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 21,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 23,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -21,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -19,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 25,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 27,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -21,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -19,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 29,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 31,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -20,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 18,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 13,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 15,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 18,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 18,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 21,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 23,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 18,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 25,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 27,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 18,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 29,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 31,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 19,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 24,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 13,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 15,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 14,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 24,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 24,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 21,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 23,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 22,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 24,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 25,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 27,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 26,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 24,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 29,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 31,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 25,
+   "z": 30,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -28,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -29,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -27,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -28,
+   "z": -19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -28,
+   "z": -17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -28,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -28,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -22,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -23,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -21,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -22,
+   "z": -19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -22,
+   "z": -17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -22,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -22,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -16,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -17,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -15,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -16,
+   "z": -19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -16,
+   "z": -17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -16,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -16,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -10,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": -11,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -9,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -10,
+   "z": -19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -10,
+   "z": -17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -10,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": -10,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 14,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 13,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 15,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 14,
+   "z": -19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 14,
+   "z": -17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 14,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 14,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 19,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 21,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": -19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": -17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 20,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 0,
+   "color": "Reddish Brown"
+  },
+  {
+   "x": 25,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 27,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": -19,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": -17,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 1,
+   "color": "Dark Green"
+  },
+  {
+   "x": 26,
+   "z": -18,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Dark Green"
+  },
+  {
+   "x": -8,
+   "z": 18,
+   "w": 2,
+   "d": 2,
+   "level": 0,
+   "color": "Pink"
+  },
+  {
+   "x": -8,
+   "z": 22,
+   "w": 2,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Red"
+  },
+  {
+   "x": 6,
+   "z": 18,
+   "w": 2,
+   "d": 2,
+   "level": 0,
+   "color": "Pink"
+  },
+  {
+   "x": 6,
+   "z": 22,
+   "w": 2,
+   "d": 2,
+   "level": 0,
+   "color": "Bright Red"
+  },
+  {
+   "x": -12,
+   "z": -17,
+   "w": 2,
+   "d": 2,
+   "level": 0,
+   "color": "White"
+  },
+  {
+   "x": -12,
+   "z": -17,
+   "w": 2,
+   "d": 2,
+   "level": 1,
+   "color": "Bright Yellow"
+  },
+  {
+   "x": -12,
+   "z": -17,
+   "w": 1,
+   "d": 1,
+   "level": 2,
+   "color": "Bright Red"
+  },
+  {
+   "x": -24,
+   "z": -21,
+   "w": 3,
+   "d": 1,
+   "level": 1,
+   "color": "Bright Red"
+  },
+  {
+   "x": -14,
+   "z": -21,
+   "w": 3,
+   "d": 1,
+   "level": 1,
+   "color": "White"
+  },
+  {
+   "x": 16,
+   "z": -21,
+   "w": 3,
+   "d": 1,
+   "level": 1,
+   "color": "Bright Blue"
+  },
+  {
+   "x": 26,
+   "z": -21,
+   "w": 3,
+   "d": 1,
+   "level": 1,
+   "color": "Black"
+  }
+ ]
+}

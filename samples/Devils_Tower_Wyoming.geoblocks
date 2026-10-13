@@ -2,11 +2,12 @@
  "app": "GeoBlocks",
  "version": 1,
  "title": "Devils Tower National Monument, Wyoming",
- "notes": "Sample creation. 1 stud = 10 m; one block = 12 m. About 264 m from base to summit (22 blocks). Vertical stripes stand in for the tower's columns; the river is drawn closer than in reality to fit the plate.",
+ "notes": "Sample creation. 1 stud = 10 m; one block = 12 m. About 264 m from base to summit (22 blocks). Vertical stripes stand in for the tower's columns; the river is drawn closer than in reality to fit the plate. The base is pinned at 1,294 m above sea level (the foot of the real tower), because the 3D terrain already includes the tower itself.",
  "origin": {
   "latitude": 44.590278,
   "longitude": -104.715278,
-  "rotationDeg": 0
+  "rotationDeg": 0,
+  "baseElevation": 1294
  },
  "scale": {
   "studLength": 10,
